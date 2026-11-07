@@ -1,0 +1,6363 @@
+{
+  "format_version": 1,
+  "game": "Psychopomp GOLD",
+  "steam_app_id": 3243190,
+  "source_scene": "res://Scenes/Elevator.tscn",
+  "viewport": {
+    "width": 960,
+    "height": 540,
+    "stretch": "viewport",
+    "texture_filter": "nearest",
+    "texture_repeat": "enabled"
+  },
+  "units": {
+    "positions": "Godot stage pixels; x right, y down",
+    "rotation": "radians, positive clockwise",
+    "time": "seconds",
+    "sprite_anchor": "center",
+    "colors": "normalized RGBA multiplied with texture"
+  },
+  "assets": [
+    {
+      "file": "assets/Gear2.png",
+      "source_resource": "res://Sprites/UI/Gear2.png",
+      "sha256": "1378506c9d84b4dda8f5d41261bda6cc84403afa6c16acab00c79e3c1fd5665a",
+      "bytes": 162391,
+      "width": 518,
+      "height": 518,
+      "mode": "RGBA"
+    },
+    {
+      "file": "assets/ElevatorBack.png",
+      "source_resource": "res://Sprites/ElevatorBack.png",
+      "sha256": "e41c9eda69ae4726da6794e4e6f579640ba34fb0baec3cdf3147102988e698c5",
+      "bytes": 7089,
+      "width": 960,
+      "height": 540,
+      "mode": "RGBA"
+    },
+    {
+      "file": "assets/ElevatorPomp.png",
+      "source_resource": "res://Sprites/ElevatorPomp.png",
+      "sha256": "bd86d7219bf9fda65199e4c0f9da847d4e8999e7d6e896c86175853159f58c19",
+      "bytes": 12518,
+      "width": 960,
+      "height": 540,
+      "mode": "RGBA"
+    },
+    {
+      "file": "assets/ElevatorPompFrames.png",
+      "source_resource": "res://Sprites/ElevatorPompFrames.png",
+      "sha256": "788e84957b59db6a350c9f2944b5350caf3847306fac175ef2899efb78a78ad5",
+      "bytes": 15447,
+      "width": 570,
+      "height": 417,
+      "mode": "RGBA"
+    },
+    {
+      "file": "assets/DownWeGo.ogg",
+      "source_resource": "res://Music/DownWeGo.ogg",
+      "sha256": "8c3105e27f235eb184dcab5392e515ee9fd302b4311c5ac3259672b558026519",
+      "bytes": 237567
+    },
+    {
+      "file": "assets/Machinery.ogg",
+      "source_resource": "res://Sounds/Machinery.ogg",
+      "sha256": "2b87f63594d9d9e145d2e0fc6e8e9a9932d91cd0465627a323966f4e11f912a6",
+      "bytes": 1078281
+    },
+    {
+      "file": "assets/WeirdWipe.png",
+      "source_resource": "res://addons/UniversalFade/Patterns/WeirdWipe.png",
+      "sha256": "71b73988828bbe945b86d8a3b2a38924aff1429fc37de66c4384d44e88fa7b7d",
+      "bytes": 421229,
+      "width": 640,
+      "height": 480,
+      "mode": "RGB"
+    }
+  ],
+  "runtime_defaults_verified_in_godot_4_3": {
+    "camera_smoothing_speed": 5,
+    "engine": {
+      "build": "official",
+      "hash": "77dcf97d82cbfe4e4615475fa52ca03da645dbd8",
+      "hex": 262912,
+      "major": 4,
+      "minor": 3,
+      "patch": 0,
+      "status": "stable",
+      "string": "4.3-stable (official)",
+      "timestamp": 0
+    },
+    "fog_enabled": false,
+    "glow_hdr_luminance_cap": 12,
+    "glow_hdr_scale": 2,
+    "glow_levels": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "glow_normalized": false,
+    "hdr_2d": false,
+    "quad_size": "Vector2(1, 1)",
+    "renderer": "forward_plus",
+    "ssao_enabled": false,
+    "ssil_enabled": false,
+    "ssr_enabled": false
+  },
+  "nodes": [
+    {
+      "path": ".",
+      "name": "Node2D",
+      "type": "Node2D",
+      "parent": null,
+      "tree_order": 0,
+      "source_line": 218,
+      "properties": {},
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    },
+    {
+      "path": "SceneLoader",
+      "name": "SceneLoader",
+      "type": "Node",
+      "parent": ".",
+      "tree_order": 1,
+      "source_line": 220,
+      "properties": {
+        "script": {
+          "kind": "ExtResource",
+          "id": "1"
+        }
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/ElevatorLoader.gd"
+    },
+    {
+      "path": "ColorRect",
+      "name": "ColorRect",
+      "type": "ColorRect",
+      "parent": ".",
+      "tree_order": 2,
+      "source_line": 223,
+      "properties": {
+        "offset_left": -449.0,
+        "offset_top": -242.0,
+        "offset_right": 1627.0,
+        "offset_bottom": 1025.0,
+        "color": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    },
+    {
+      "path": "ElevatorBack",
+      "name": "ElevatorBack",
+      "type": "Sprite2D",
+      "parent": ".",
+      "tree_order": 3,
+      "source_line": 230,
+      "properties": {
+        "position": [
+          479.0,
+          269.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "2"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "3"
+        }
+      },
+      "local": {
+        "position": [
+          479.0,
+          269.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          479.0,
+          269.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SpriteShake.cs",
+      "texture": "res://Sprites/ElevatorBack.png"
+    },
+    {
+      "path": "ElevatorPomp",
+      "name": "ElevatorPomp",
+      "type": "Sprite2D",
+      "parent": ".",
+      "tree_order": 4,
+      "source_line": 235,
+      "properties": {
+        "position": [
+          485.0,
+          273.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "4"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "3"
+        }
+      },
+      "local": {
+        "position": [
+          485.0,
+          273.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          485.0,
+          273.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SpriteShake.cs",
+      "texture": "res://Sprites/ElevatorPomp.png"
+    },
+    {
+      "path": "ElevatorPomp/Gear4",
+      "name": "Gear4",
+      "type": "Sprite2D",
+      "parent": "ElevatorPomp",
+      "tree_order": 5,
+      "source_line": 240,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          -227.0,
+          -82.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 2.0,
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          -227.0,
+          -82.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          258.0,
+          191.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "ElevatorPomp/Gear2",
+      "name": "Gear2",
+      "type": "Sprite2D",
+      "parent": "ElevatorPomp",
+      "tree_order": 6,
+      "source_line": 250,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          158.375,
+          -225.625
+        ],
+        "scale": [
+          0.311293,
+          0.311293
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 2.0,
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          158.375,
+          -225.625
+        ],
+        "scale": [
+          0.311293,
+          0.311293
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          643.375,
+          47.375
+        ],
+        "scale": [
+          0.311293,
+          0.311293
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "ElevatorPomp/Gear3",
+      "name": "Gear3",
+      "type": "Sprite2D",
+      "parent": "ElevatorPomp",
+      "tree_order": 7,
+      "source_line": 260,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          -240.0,
+          -221.0
+        ],
+        "scale": [
+          0.508928,
+          0.508928
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 2.0,
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          -240.0,
+          -221.0
+        ],
+        "scale": [
+          0.508928,
+          0.508928
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          245.0,
+          52.0
+        ],
+        "scale": [
+          0.508928,
+          0.508928
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "ElevatorPomp4",
+      "name": "ElevatorPomp4",
+      "type": "Sprite2D",
+      "parent": ".",
+      "tree_order": 8,
+      "source_line": 270,
+      "properties": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "7"
+        },
+        "hframes": 3,
+        "script": {
+          "kind": "ExtResource",
+          "id": "3"
+        },
+        "power": 5.0
+      },
+      "local": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SpriteShake.cs",
+      "texture": "res://Sprites/ElevatorPompFrames.png"
+    },
+    {
+      "path": "ElevatorPomp3",
+      "name": "ElevatorPomp3",
+      "type": "Sprite2D",
+      "parent": ".",
+      "tree_order": 9,
+      "source_line": 277,
+      "properties": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "7"
+        },
+        "hframes": 3,
+        "script": {
+          "kind": "ExtResource",
+          "id": "3"
+        },
+        "power": 3.0
+      },
+      "local": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SpriteShake.cs",
+      "texture": "res://Sprites/ElevatorPompFrames.png"
+    },
+    {
+      "path": "ElevatorPomp2",
+      "name": "ElevatorPomp2",
+      "type": "Sprite2D",
+      "parent": ".",
+      "tree_order": 10,
+      "source_line": 284,
+      "properties": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "7"
+        },
+        "hframes": 3,
+        "script": {
+          "kind": "ExtResource",
+          "id": "3"
+        }
+      },
+      "local": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SpriteShake.cs",
+      "texture": "res://Sprites/ElevatorPompFrames.png"
+    },
+    {
+      "path": "ElevatorPomp2/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "type": "AnimationPlayer",
+      "parent": "ElevatorPomp2",
+      "tree_order": 11,
+      "source_line": 290,
+      "properties": {
+        "libraries": "{",
+        "autoplay": "ElevatorBlink"
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          461.0,
+          334.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    },
+    {
+      "path": "WorldEnvironment",
+      "name": "WorldEnvironment",
+      "type": "WorldEnvironment",
+      "parent": ".",
+      "tree_order": 12,
+      "source_line": 296,
+      "properties": {
+        "environment": {
+          "kind": "SubResource",
+          "id": "Environment_f7xf4"
+        }
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    },
+    {
+      "path": "WorldEnvironment/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "type": "AnimationPlayer",
+      "parent": "WorldEnvironment",
+      "tree_order": 13,
+      "source_line": 299,
+      "properties": {
+        "libraries": "{",
+        "autoplay": "GlowChange"
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    },
+    {
+      "path": "MeshInstance2D",
+      "name": "MeshInstance2D",
+      "type": "MeshInstance2D",
+      "parent": ".",
+      "tree_order": 14,
+      "source_line": 305,
+      "properties": {
+        "visible": false,
+        "modulate": [
+          0.819608,
+          0.231373,
+          0.0,
+          1.0
+        ],
+        "position": [
+          198.0,
+          624.951
+        ],
+        "rotation": -3.14159,
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          198.0,
+          624.951
+        ],
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "rotation_rad": -3.14159
+      },
+      "visible": false,
+      "modulate_rgba": [
+        0.819608,
+        0.231373,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          198.0,
+          624.951
+        ],
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "rotation_rad": -3.14159,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "MeshInstance2D2",
+      "name": "MeshInstance2D2",
+      "type": "MeshInstance2D",
+      "parent": ".",
+      "tree_order": 15,
+      "source_line": 314,
+      "properties": {
+        "visible": false,
+        "modulate": [
+          0.819608,
+          0.231373,
+          0.0,
+          1.0
+        ],
+        "position": [
+          711.0,
+          624.951
+        ],
+        "rotation": -3.14159,
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          711.0,
+          624.951
+        ],
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "rotation_rad": -3.14159
+      },
+      "visible": false,
+      "modulate_rgba": [
+        0.819608,
+        0.231373,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          711.0,
+          624.951
+        ],
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "rotation_rad": -3.14159,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "MeshInstance2D3",
+      "name": "MeshInstance2D3",
+      "type": "MeshInstance2D",
+      "parent": ".",
+      "tree_order": 16,
+      "source_line": 323,
+      "properties": {
+        "visible": false,
+        "modulate": [
+          0.517647,
+          0.133333,
+          0.0,
+          1.0
+        ],
+        "position": [
+          198.0,
+          968.076
+        ],
+        "rotation": -3.14159,
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          198.0,
+          968.076
+        ],
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "rotation_rad": -3.14159
+      },
+      "visible": false,
+      "modulate_rgba": [
+        0.517647,
+        0.133333,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          198.0,
+          968.076
+        ],
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "rotation_rad": -3.14159,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "MeshInstance2D4",
+      "name": "MeshInstance2D4",
+      "type": "MeshInstance2D",
+      "parent": ".",
+      "tree_order": 17,
+      "source_line": 332,
+      "properties": {
+        "visible": false,
+        "modulate": [
+          0.517647,
+          0.133333,
+          0.0,
+          1.0
+        ],
+        "position": [
+          711.0,
+          968.076
+        ],
+        "rotation": -3.14159,
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          711.0,
+          968.076
+        ],
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "rotation_rad": -3.14159
+      },
+      "visible": false,
+      "modulate_rgba": [
+        0.517647,
+        0.133333,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          711.0,
+          968.076
+        ],
+        "scale": [
+          31.375,
+          76.1528
+        ],
+        "rotation_rad": -3.14159,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "Shaker",
+      "name": "Shaker",
+      "type": "Node2D",
+      "parent": ".",
+      "tree_order": 18,
+      "source_line": 341,
+      "properties": {
+        "script": {
+          "kind": "ExtResource",
+          "id": "3"
+        },
+        "power": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SpriteShake.cs"
+    },
+    {
+      "path": "Shaker/LeftBack13",
+      "name": "LeftBack13",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 19,
+      "source_line": 345,
+      "properties": {
+        "position": [
+          113.0,
+          -70.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          113.0,
+          -70.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          113.0,
+          -70.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftBack13/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftBack13",
+      "tree_order": 20,
+      "source_line": 350,
+      "properties": {
+        "modulate": [
+          0.54902,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          113.0,
+          -70.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftBack14",
+      "name": "LeftBack14",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 21,
+      "source_line": 360,
+      "properties": {
+        "position": [
+          175.0,
+          53.0001
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          175.0,
+          53.0001
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          175.0,
+          53.0001
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftBack14/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftBack14",
+      "tree_order": 22,
+      "source_line": 365,
+      "properties": {
+        "modulate": [
+          0.54902,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          175.0,
+          53.0001
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftBack15",
+      "name": "LeftBack15",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 23,
+      "source_line": 375,
+      "properties": {
+        "position": [
+          113.0,
+          154.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          113.0,
+          154.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          113.0,
+          154.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftBack15/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftBack15",
+      "tree_order": 24,
+      "source_line": 380,
+      "properties": {
+        "modulate": [
+          0.54902,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          113.0,
+          154.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftBack16",
+      "name": "LeftBack16",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 25,
+      "source_line": 390,
+      "properties": {
+        "position": [
+          175.0,
+          277.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          175.0,
+          277.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          175.0,
+          277.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftBack16/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftBack16",
+      "tree_order": 26,
+      "source_line": 395,
+      "properties": {
+        "modulate": [
+          0.54902,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          175.0,
+          277.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftBack17",
+      "name": "LeftBack17",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 27,
+      "source_line": 405,
+      "properties": {
+        "position": [
+          113.0,
+          382.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          113.0,
+          382.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          113.0,
+          382.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftBack17/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftBack17",
+      "tree_order": 28,
+      "source_line": 410,
+      "properties": {
+        "modulate": [
+          0.54902,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          113.0,
+          382.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftBack18",
+      "name": "LeftBack18",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 29,
+      "source_line": 420,
+      "properties": {
+        "position": [
+          175.0,
+          505.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          175.0,
+          505.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          175.0,
+          505.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftBack18/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftBack18",
+      "tree_order": 30,
+      "source_line": 425,
+      "properties": {
+        "modulate": [
+          0.54902,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          175.0,
+          505.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftFront",
+      "name": "LeftFront",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 31,
+      "source_line": 435,
+      "properties": {
+        "position": [
+          10.0,
+          49.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          10.0,
+          49.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          10.0,
+          49.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftFront/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftFront",
+      "tree_order": 32,
+      "source_line": 440,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          10.0,
+          49.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftFront2",
+      "name": "LeftFront2",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 33,
+      "source_line": 450,
+      "properties": {
+        "position": [
+          72.0,
+          172.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          72.0,
+          172.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          72.0,
+          172.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftFront2/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftFront2",
+      "tree_order": 34,
+      "source_line": 455,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          72.0,
+          172.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftFront3",
+      "name": "LeftFront3",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 35,
+      "source_line": 465,
+      "properties": {
+        "position": [
+          10.0,
+          273.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          10.0,
+          273.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          10.0,
+          273.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftFront3/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftFront3",
+      "tree_order": 36,
+      "source_line": 470,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          10.0,
+          273.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftFront4",
+      "name": "LeftFront4",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 37,
+      "source_line": 480,
+      "properties": {
+        "position": [
+          72.0,
+          396.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          72.0,
+          396.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          72.0,
+          396.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftFront4/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftFront4",
+      "tree_order": 38,
+      "source_line": 485,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          72.0,
+          396.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftFront5",
+      "name": "LeftFront5",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 39,
+      "source_line": 495,
+      "properties": {
+        "position": [
+          10.0,
+          501.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          10.0,
+          501.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          10.0,
+          501.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftFront5/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftFront5",
+      "tree_order": 40,
+      "source_line": 500,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          10.0,
+          501.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/LeftFront6",
+      "name": "LeftFront6",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 41,
+      "source_line": 510,
+      "properties": {
+        "position": [
+          72.0,
+          624.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          72.0,
+          624.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          72.0,
+          624.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/LeftFront6/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/LeftFront6",
+      "tree_order": 42,
+      "source_line": 515,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          72.0,
+          624.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightBack13",
+      "name": "RightBack13",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 43,
+      "source_line": 525,
+      "properties": {
+        "position": [
+          751.0,
+          45.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          751.0,
+          45.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          751.0,
+          45.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightBack13/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightBack13",
+      "tree_order": 44,
+      "source_line": 530,
+      "properties": {
+        "modulate": [
+          0.513726,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          751.0,
+          45.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightBack14",
+      "name": "RightBack14",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 45,
+      "source_line": 540,
+      "properties": {
+        "position": [
+          813.0,
+          168.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          813.0,
+          168.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          813.0,
+          168.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightBack14/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightBack14",
+      "tree_order": 46,
+      "source_line": 545,
+      "properties": {
+        "modulate": [
+          0.513726,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          813.0,
+          168.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightBack15",
+      "name": "RightBack15",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 47,
+      "source_line": 555,
+      "properties": {
+        "position": [
+          751.0,
+          269.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          751.0,
+          269.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          751.0,
+          269.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightBack15/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightBack15",
+      "tree_order": 48,
+      "source_line": 560,
+      "properties": {
+        "modulate": [
+          0.513726,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          751.0,
+          269.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightBack16",
+      "name": "RightBack16",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 49,
+      "source_line": 570,
+      "properties": {
+        "position": [
+          813.0,
+          392.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          813.0,
+          392.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          813.0,
+          392.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightBack16/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightBack16",
+      "tree_order": 50,
+      "source_line": 575,
+      "properties": {
+        "modulate": [
+          0.513726,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          813.0,
+          392.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightBack17",
+      "name": "RightBack17",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 51,
+      "source_line": 585,
+      "properties": {
+        "position": [
+          751.0,
+          497.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          751.0,
+          497.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          751.0,
+          497.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightBack17/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightBack17",
+      "tree_order": 52,
+      "source_line": 590,
+      "properties": {
+        "modulate": [
+          0.513726,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          751.0,
+          497.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightBack18",
+      "name": "RightBack18",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 53,
+      "source_line": 600,
+      "properties": {
+        "position": [
+          813.0,
+          620.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          813.0,
+          620.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          813.0,
+          620.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightBack18/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightBack18",
+      "tree_order": 54,
+      "source_line": 605,
+      "properties": {
+        "modulate": [
+          0.513726,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          813.0,
+          620.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightFront7",
+      "name": "RightFront7",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 55,
+      "source_line": 615,
+      "properties": {
+        "position": [
+          871.0,
+          -62.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          871.0,
+          -62.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          871.0,
+          -62.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightFront7/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightFront7",
+      "tree_order": 56,
+      "source_line": 620,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          871.0,
+          -62.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightFront8",
+      "name": "RightFront8",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 57,
+      "source_line": 630,
+      "properties": {
+        "position": [
+          933.0,
+          61.0002
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          933.0,
+          61.0002
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          933.0,
+          61.0002
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightFront8/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightFront8",
+      "tree_order": 58,
+      "source_line": 635,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          933.0,
+          61.0002
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightFront9",
+      "name": "RightFront9",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 59,
+      "source_line": 645,
+      "properties": {
+        "position": [
+          871.0,
+          162.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          871.0,
+          162.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          871.0,
+          162.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightFront9/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightFront9",
+      "tree_order": 60,
+      "source_line": 650,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          871.0,
+          162.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightFront10",
+      "name": "RightFront10",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 61,
+      "source_line": 660,
+      "properties": {
+        "position": [
+          933.0,
+          285.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          933.0,
+          285.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          933.0,
+          285.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightFront10/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightFront10",
+      "tree_order": 62,
+      "source_line": 665,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          933.0,
+          285.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightFront11",
+      "name": "RightFront11",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 63,
+      "source_line": 675,
+      "properties": {
+        "position": [
+          871.0,
+          390.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          871.0,
+          390.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          871.0,
+          390.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightFront11/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightFront11",
+      "tree_order": 64,
+      "source_line": 680,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          871.0,
+          390.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/RightFront12",
+      "name": "RightFront12",
+      "type": "Node2D",
+      "parent": "Shaker",
+      "tree_order": 65,
+      "source_line": 690,
+      "properties": {
+        "position": [
+          933.0,
+          513.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        }
+      },
+      "local": {
+        "position": [
+          933.0,
+          513.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          933.0,
+          513.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd"
+    },
+    {
+      "path": "Shaker/RightFront12/Gear5",
+      "name": "Gear5",
+      "type": "Sprite2D",
+      "parent": "Shaker/RightFront12",
+      "tree_order": 66,
+      "source_line": 695,
+      "properties": {
+        "modulate": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "texture": {
+          "kind": "ExtResource",
+          "id": "5"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 1.0,
+        "tweenPosition": true,
+        "endPosition": [
+          -200.0,
+          0.0
+        ],
+        "tweenRotation": true,
+        "endrotation": 2.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          933.0,
+          513.0
+        ],
+        "scale": [
+          0.283422,
+          0.283422
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "texture": "res://Sprites/UI/Gear2.png"
+    },
+    {
+      "path": "Shaker/MeshInstance2D5",
+      "name": "MeshInstance2D5",
+      "type": "MeshInstance2D",
+      "parent": "Shaker",
+      "tree_order": 67,
+      "source_line": 705,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          520.54,
+          641.941
+        ],
+        "rotation": 3.14159,
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        },
+        "speed": 200
+      },
+      "local": {
+        "position": [
+          520.54,
+          641.941
+        ],
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "rotation_rad": 3.14159
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          520.54,
+          641.941
+        ],
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "rotation_rad": 3.14159,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "Shaker/MeshInstance2D8",
+      "name": "MeshInstance2D8",
+      "type": "MeshInstance2D",
+      "parent": "Shaker",
+      "tree_order": 68,
+      "source_line": 714,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          520.54,
+          137.0
+        ],
+        "rotation": 3.14159,
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        },
+        "speed": 50
+      },
+      "local": {
+        "position": [
+          520.54,
+          137.0
+        ],
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "rotation_rad": 3.14159
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          520.54,
+          137.0
+        ],
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "rotation_rad": 3.14159,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "Shaker/MeshInstance2D6",
+      "name": "MeshInstance2D6",
+      "type": "MeshInstance2D",
+      "parent": "Shaker",
+      "tree_order": 69,
+      "source_line": 723,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          515.0,
+          207.0
+        ],
+        "rotation": -0.0767945,
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        },
+        "speed": 150
+      },
+      "local": {
+        "position": [
+          515.0,
+          207.0
+        ],
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "rotation_rad": -0.0767945
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          515.0,
+          207.0
+        ],
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "rotation_rad": -0.0767945,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "Shaker/MeshInstance2D7",
+      "name": "MeshInstance2D7",
+      "type": "MeshInstance2D",
+      "parent": "Shaker",
+      "tree_order": 70,
+      "source_line": 732,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          515.0,
+          605.0
+        ],
+        "rotation": 0.0802851,
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "8"
+        },
+        "speed": 100
+      },
+      "local": {
+        "position": [
+          515.0,
+          605.0
+        ],
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "rotation_rad": 0.0802851
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          515.0,
+          605.0
+        ],
+        "scale": [
+          1245.94,
+          42.1733
+        ],
+        "rotation_rad": 0.0802851,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/SlidingUp.gd",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "Shaker/MeshInstance2D9",
+      "name": "MeshInstance2D9",
+      "type": "MeshInstance2D",
+      "parent": "Shaker",
+      "tree_order": 71,
+      "source_line": 741,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          -99.2832,
+          275.284
+        ],
+        "rotation": 0.16057,
+        "scale": [
+          352.069,
+          963.232
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 5.0,
+        "tweenRotation": true,
+        "endrotation": -0.261
+      },
+      "local": {
+        "position": [
+          -99.2832,
+          275.284
+        ],
+        "scale": [
+          352.069,
+          963.232
+        ],
+        "rotation_rad": 0.16057
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          -99.2832,
+          275.284
+        ],
+        "scale": [
+          352.069,
+          963.232
+        ],
+        "rotation_rad": 0.16057,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "Shaker/MeshInstance2D10",
+      "name": "MeshInstance2D10",
+      "type": "MeshInstance2D",
+      "parent": "Shaker",
+      "tree_order": 72,
+      "source_line": 752,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          1042.0,
+          275.284
+        ],
+        "rotation": 0.16057,
+        "scale": [
+          352.069,
+          963.232
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_lquqv"
+        },
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 5.0,
+        "tweenRotation": true,
+        "endrotation": -0.261
+      },
+      "local": {
+        "position": [
+          1042.0,
+          275.284
+        ],
+        "scale": [
+          352.069,
+          963.232
+        ],
+        "rotation_rad": 0.16057
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          1042.0,
+          275.284
+        ],
+        "scale": [
+          352.069,
+          963.232
+        ],
+        "rotation_rad": 0.16057,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs",
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "Camera2D",
+      "name": "Camera2D",
+      "type": "Camera2D",
+      "parent": ".",
+      "tree_order": 73,
+      "source_line": 763,
+      "properties": {
+        "position": [
+          480.0,
+          269.0
+        ],
+        "rotation": -0.0802851,
+        "ignore_rotation": false,
+        "rotation_smoothing_enabled": true,
+        "script": {
+          "kind": "ExtResource",
+          "id": "6"
+        },
+        "Time": 2.0,
+        "tweenRotation": true,
+        "endrotation": 0.2
+      },
+      "local": {
+        "position": [
+          480.0,
+          269.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": -0.0802851
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          480.0,
+          269.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": -0.0802851,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "script": "res://Scripts/Tweener2D.cs"
+    },
+    {
+      "path": "ColorRect2",
+      "name": "ColorRect2",
+      "type": "ColorRect",
+      "parent": ".",
+      "tree_order": 74,
+      "source_line": 773,
+      "properties": {
+        "material": {
+          "kind": "ExtResource",
+          "id": "9"
+        },
+        "offset_left": -221.0,
+        "offset_top": -146.0,
+        "offset_right": 1141.0,
+        "offset_bottom": 720.0
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    },
+    {
+      "path": "AnimationPlayer",
+      "name": "AnimationPlayer",
+      "type": "AnimationPlayer",
+      "parent": ".",
+      "tree_order": 75,
+      "source_line": 780,
+      "properties": {
+        "libraries": "{",
+        "autoplay": "Transition"
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    },
+    {
+      "path": "MeshInstance2D5",
+      "name": "MeshInstance2D5",
+      "type": "MeshInstance2D",
+      "parent": ".",
+      "tree_order": 76,
+      "source_line": 786,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          485.25,
+          275.75
+        ],
+        "scale": [
+          971.5,
+          552.5
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_iwd0u"
+        }
+      },
+      "local": {
+        "position": [
+          485.25,
+          275.75
+        ],
+        "scale": [
+          971.5,
+          552.5
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          485.25,
+          275.75
+        ],
+        "scale": [
+          971.5,
+          552.5
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "MeshInstance2D6",
+      "name": "MeshInstance2D6",
+      "type": "MeshInstance2D",
+      "parent": ".",
+      "tree_order": 77,
+      "source_line": 792,
+      "properties": {
+        "modulate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          485.25,
+          870.0
+        ],
+        "scale": [
+          1356.5,
+          958.25
+        ],
+        "mesh": {
+          "kind": "SubResource",
+          "id": "QuadMesh_iwd0u"
+        }
+      },
+      "local": {
+        "position": [
+          485.25,
+          870.0
+        ],
+        "scale": [
+          1356.5,
+          958.25
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "world_nominal": {
+        "position": [
+          485.25,
+          870.0
+        ],
+        "scale": [
+          1356.5,
+          958.25
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      },
+      "quad_size_local": [
+        1,
+        1
+      ]
+    },
+    {
+      "path": "AudioStreamPlayer",
+      "name": "AudioStreamPlayer",
+      "type": "AudioStreamPlayer",
+      "parent": ".",
+      "tree_order": 78,
+      "source_line": 798,
+      "properties": {
+        "stream": {
+          "kind": "ExtResource",
+          "id": "10"
+        },
+        "volume_db": -26.38,
+        "autoplay": true
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    },
+    {
+      "path": "AudioStreamPlayer2",
+      "name": "AudioStreamPlayer2",
+      "type": "AudioStreamPlayer",
+      "parent": ".",
+      "tree_order": 79,
+      "source_line": 803,
+      "properties": {
+        "stream": {
+          "kind": "ExtResource",
+          "id": "11"
+        },
+        "volume_db": -14.55,
+        "autoplay": true
+      },
+      "local": {
+        "position": [
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0
+      },
+      "visible": true,
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "world_nominal": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation_rad": 0,
+        "note": "serialized transforms before animation, shake, or camera"
+      }
+    }
+  ],
+  "gears": [
+    {
+      "path": "ElevatorPomp/Gear4",
+      "tree_order": 5,
+      "source_line": 240,
+      "group": "ElevatorPomp",
+      "group_position": [
+        485.0,
+        273.0
+      ],
+      "local_position": [
+        -227.0,
+        -82.0
+      ],
+      "world_nominal_center": [
+        258.0,
+        191.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 2.0,
+      "loop_seconds": 4.0,
+      "x_delta_local": 0,
+      "x_delta_stage": 0.0,
+      "vertical_speed_global_px_s": 0,
+      "shake_ancestor": "ElevatorPomp"
+    },
+    {
+      "path": "ElevatorPomp/Gear2",
+      "tree_order": 6,
+      "source_line": 250,
+      "group": "ElevatorPomp",
+      "group_position": [
+        485.0,
+        273.0
+      ],
+      "local_position": [
+        158.375,
+        -225.625
+      ],
+      "world_nominal_center": [
+        643.375,
+        47.375
+      ],
+      "scale": 0.311293,
+      "size_px": 161.249774,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 2.0,
+      "loop_seconds": 4.0,
+      "x_delta_local": 0,
+      "x_delta_stage": 0.0,
+      "vertical_speed_global_px_s": 0,
+      "shake_ancestor": "ElevatorPomp"
+    },
+    {
+      "path": "ElevatorPomp/Gear3",
+      "tree_order": 7,
+      "source_line": 260,
+      "group": "ElevatorPomp",
+      "group_position": [
+        485.0,
+        273.0
+      ],
+      "local_position": [
+        -240.0,
+        -221.0
+      ],
+      "world_nominal_center": [
+        245.0,
+        52.0
+      ],
+      "scale": 0.508928,
+      "size_px": 263.624704,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 2.0,
+      "loop_seconds": 4.0,
+      "x_delta_local": 0,
+      "x_delta_stage": 0.0,
+      "vertical_speed_global_px_s": 0,
+      "shake_ancestor": "ElevatorPomp"
+    },
+    {
+      "path": "Shaker/LeftBack13/Gear5",
+      "tree_order": 20,
+      "source_line": 350,
+      "group": "Shaker/LeftBack13",
+      "group_position": [
+        113.0,
+        -70.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        113.0,
+        -70.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftBack14/Gear5",
+      "tree_order": 22,
+      "source_line": 365,
+      "group": "Shaker/LeftBack14",
+      "group_position": [
+        175.0,
+        53.0001
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        175.0,
+        53.0001
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftBack15/Gear5",
+      "tree_order": 24,
+      "source_line": 380,
+      "group": "Shaker/LeftBack15",
+      "group_position": [
+        113.0,
+        154.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        113.0,
+        154.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftBack16/Gear5",
+      "tree_order": 26,
+      "source_line": 395,
+      "group": "Shaker/LeftBack16",
+      "group_position": [
+        175.0,
+        277.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        175.0,
+        277.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftBack17/Gear5",
+      "tree_order": 28,
+      "source_line": 410,
+      "group": "Shaker/LeftBack17",
+      "group_position": [
+        113.0,
+        382.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        113.0,
+        382.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftBack18/Gear5",
+      "tree_order": 30,
+      "source_line": 425,
+      "group": "Shaker/LeftBack18",
+      "group_position": [
+        175.0,
+        505.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        175.0,
+        505.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.54902,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftFront/Gear5",
+      "tree_order": 32,
+      "source_line": 440,
+      "group": "Shaker/LeftFront",
+      "group_position": [
+        10.0,
+        49.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        10.0,
+        49.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftFront2/Gear5",
+      "tree_order": 34,
+      "source_line": 455,
+      "group": "Shaker/LeftFront2",
+      "group_position": [
+        72.0,
+        172.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        72.0,
+        172.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftFront3/Gear5",
+      "tree_order": 36,
+      "source_line": 470,
+      "group": "Shaker/LeftFront3",
+      "group_position": [
+        10.0,
+        273.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        10.0,
+        273.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftFront4/Gear5",
+      "tree_order": 38,
+      "source_line": 485,
+      "group": "Shaker/LeftFront4",
+      "group_position": [
+        72.0,
+        396.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        72.0,
+        396.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftFront5/Gear5",
+      "tree_order": 40,
+      "source_line": 500,
+      "group": "Shaker/LeftFront5",
+      "group_position": [
+        10.0,
+        501.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        10.0,
+        501.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/LeftFront6/Gear5",
+      "tree_order": 42,
+      "source_line": 515,
+      "group": "Shaker/LeftFront6",
+      "group_position": [
+        72.0,
+        624.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        72.0,
+        624.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightBack13/Gear5",
+      "tree_order": 44,
+      "source_line": 530,
+      "group": "Shaker/RightBack13",
+      "group_position": [
+        751.0,
+        45.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        751.0,
+        45.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightBack14/Gear5",
+      "tree_order": 46,
+      "source_line": 545,
+      "group": "Shaker/RightBack14",
+      "group_position": [
+        813.0,
+        168.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        813.0,
+        168.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightBack15/Gear5",
+      "tree_order": 48,
+      "source_line": 560,
+      "group": "Shaker/RightBack15",
+      "group_position": [
+        751.0,
+        269.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        751.0,
+        269.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightBack16/Gear5",
+      "tree_order": 50,
+      "source_line": 575,
+      "group": "Shaker/RightBack16",
+      "group_position": [
+        813.0,
+        392.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        813.0,
+        392.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightBack17/Gear5",
+      "tree_order": 52,
+      "source_line": 590,
+      "group": "Shaker/RightBack17",
+      "group_position": [
+        751.0,
+        497.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        751.0,
+        497.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightBack18/Gear5",
+      "tree_order": 54,
+      "source_line": 605,
+      "group": "Shaker/RightBack18",
+      "group_position": [
+        813.0,
+        620.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        813.0,
+        620.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        0.513726,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightFront7/Gear5",
+      "tree_order": 56,
+      "source_line": 620,
+      "group": "Shaker/RightFront7",
+      "group_position": [
+        871.0,
+        -62.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        871.0,
+        -62.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightFront8/Gear5",
+      "tree_order": 58,
+      "source_line": 635,
+      "group": "Shaker/RightFront8",
+      "group_position": [
+        933.0,
+        61.0002
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        933.0,
+        61.0002
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightFront9/Gear5",
+      "tree_order": 60,
+      "source_line": 650,
+      "group": "Shaker/RightFront9",
+      "group_position": [
+        871.0,
+        162.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        871.0,
+        162.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightFront10/Gear5",
+      "tree_order": 62,
+      "source_line": 665,
+      "group": "Shaker/RightFront10",
+      "group_position": [
+        933.0,
+        285.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        933.0,
+        285.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightFront11/Gear5",
+      "tree_order": 64,
+      "source_line": 680,
+      "group": "Shaker/RightFront11",
+      "group_position": [
+        871.0,
+        390.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        871.0,
+        390.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": 200.0,
+      "x_delta_stage": 56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    },
+    {
+      "path": "Shaker/RightFront12/Gear5",
+      "tree_order": 66,
+      "source_line": 695,
+      "group": "Shaker/RightFront12",
+      "group_position": [
+        933.0,
+        513.0
+      ],
+      "local_position": [
+        0,
+        0
+      ],
+      "world_nominal_center": [
+        933.0,
+        513.0
+      ],
+      "scale": 0.283422,
+      "size_px": 146.812596,
+      "modulate_rgba": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rotation_start_rad": 0,
+      "rotation_delta_rad": 2.0,
+      "one_leg_seconds": 1.0,
+      "loop_seconds": 2.0,
+      "x_delta_local": -200.0,
+      "x_delta_stage": -56.684400000000004,
+      "vertical_speed_global_px_s": 250,
+      "shake_ancestor": "Shaker"
+    }
+  ],
+  "geometry": [
+    {
+      "path": "MeshInstance2D",
+      "role": "hidden_geometry",
+      "tree_order": 14,
+      "source_line": 305,
+      "visible": false,
+      "center": [
+        198.0,
+        624.951
+      ],
+      "width": 31.375,
+      "height": 76.1528,
+      "rotation_rad": -3.14159,
+      "rotation_deg": -179.9998479605043,
+      "modulate_rgba": [
+        0.819608,
+        0.231373,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 250,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "MeshInstance2D2",
+      "role": "hidden_geometry",
+      "tree_order": 15,
+      "source_line": 314,
+      "visible": false,
+      "center": [
+        711.0,
+        624.951
+      ],
+      "width": 31.375,
+      "height": 76.1528,
+      "rotation_rad": -3.14159,
+      "rotation_deg": -179.9998479605043,
+      "modulate_rgba": [
+        0.819608,
+        0.231373,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 250,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "MeshInstance2D3",
+      "role": "hidden_geometry",
+      "tree_order": 16,
+      "source_line": 323,
+      "visible": false,
+      "center": [
+        198.0,
+        968.076
+      ],
+      "width": 31.375,
+      "height": 76.1528,
+      "rotation_rad": -3.14159,
+      "rotation_deg": -179.9998479605043,
+      "modulate_rgba": [
+        0.517647,
+        0.133333,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 250,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "MeshInstance2D4",
+      "role": "hidden_geometry",
+      "tree_order": 17,
+      "source_line": 332,
+      "visible": false,
+      "center": [
+        711.0,
+        968.076
+      ],
+      "width": 31.375,
+      "height": 76.1528,
+      "rotation_rad": -3.14159,
+      "rotation_deg": -179.9998479605043,
+      "modulate_rgba": [
+        0.517647,
+        0.133333,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 250,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "Shaker/MeshInstance2D5",
+      "role": "scrolling_beam",
+      "tree_order": 67,
+      "source_line": 705,
+      "visible": true,
+      "center": [
+        520.54,
+        641.941
+      ],
+      "width": 1245.94,
+      "height": 42.1733,
+      "rotation_rad": 3.14159,
+      "rotation_deg": 179.9998479605043,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 200,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "Shaker/MeshInstance2D8",
+      "role": "scrolling_beam",
+      "tree_order": 68,
+      "source_line": 714,
+      "visible": true,
+      "center": [
+        520.54,
+        137.0
+      ],
+      "width": 1245.94,
+      "height": 42.1733,
+      "rotation_rad": 3.14159,
+      "rotation_deg": 179.9998479605043,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 50,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "Shaker/MeshInstance2D6",
+      "role": "scrolling_beam",
+      "tree_order": 69,
+      "source_line": 723,
+      "visible": true,
+      "center": [
+        515.0,
+        207.0
+      ],
+      "width": 1245.94,
+      "height": 42.1733,
+      "rotation_rad": -0.0767945,
+      "rotation_deg": -4.400000739817401,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 150,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "Shaker/MeshInstance2D7",
+      "role": "scrolling_beam",
+      "tree_order": 70,
+      "source_line": 732,
+      "visible": true,
+      "center": [
+        515.0,
+        605.0
+      ],
+      "width": 1245.94,
+      "height": 42.1733,
+      "rotation_rad": 0.0802851,
+      "rotation_deg": 4.599997387785765,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 100,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "Shaker/MeshInstance2D9",
+      "role": "side_plate",
+      "tree_order": 71,
+      "source_line": 741,
+      "visible": true,
+      "center": [
+        -99.2832,
+        275.284
+      ],
+      "width": 352.069,
+      "height": 963.232,
+      "rotation_rad": 0.16057,
+      "rotation_deg": 9.199983316415627,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 0,
+      "rotation_delta_rad": -0.261,
+      "one_leg_seconds": 5.0
+    },
+    {
+      "path": "Shaker/MeshInstance2D10",
+      "role": "side_plate",
+      "tree_order": 72,
+      "source_line": 752,
+      "visible": true,
+      "center": [
+        1042.0,
+        275.284
+      ],
+      "width": 352.069,
+      "height": 963.232,
+      "rotation_rad": 0.16057,
+      "rotation_deg": 9.199983316415627,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 0,
+      "rotation_delta_rad": -0.261,
+      "one_leg_seconds": 5.0
+    },
+    {
+      "path": "MeshInstance2D5",
+      "role": "opening_shutter",
+      "tree_order": 76,
+      "source_line": 786,
+      "visible": true,
+      "center": [
+        485.25,
+        275.75
+      ],
+      "width": 971.5,
+      "height": 552.5,
+      "rotation_rad": 0,
+      "rotation_deg": 0.0,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 0,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    },
+    {
+      "path": "MeshInstance2D6",
+      "role": "closing_shutter",
+      "tree_order": 77,
+      "source_line": 792,
+      "visible": true,
+      "center": [
+        485.25,
+        870.0
+      ],
+      "width": 1356.5,
+      "height": 958.25,
+      "rotation_rad": 0,
+      "rotation_deg": 0.0,
+      "modulate_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "vertical_speed_global_px_s": 0,
+      "rotation_delta_rad": 0,
+      "one_leg_seconds": 0
+    }
+  ],
+  "environment": {
+    "background_mode": 3,
+    "tonemap_mode": 3,
+    "tonemap_exposure": 0.74,
+    "tonemap_white": 3.5,
+    "ssr_fade_in": 0.31058,
+    "ssr_fade_out": 0.784584,
+    "ssr_depth_tolerance": 79.21,
+    "ssao_radius": 3.93,
+    "ssao_power": 0.699775,
+    "ssao_ao_channel_affect": 1.0,
+    "ssil_radius": 11.38,
+    "ssil_intensity": 8.95,
+    "ssil_sharpness": 0.0,
+    "sdfgi_bounce_feedback": 0.0,
+    "glow_enabled": true,
+    "glow_intensity": 3.57,
+    "glow_strength": 0.0,
+    "glow_mix": 0.364,
+    "glow_bloom": 0.17,
+    "glow_blend_mode": 4,
+    "glow_hdr_threshold": 0.0,
+    "fog_density": 0.258
+  },
+  "psx": {
+    "enabled": true,
+    "dithering": true,
+    "colors": 8,
+    "dither_size": 1,
+    "matrix": [
+      [
+        0,
+        0.5,
+        0.1,
+        0.65
+      ],
+      [
+        0.75,
+        0.25,
+        0.9,
+        0.35
+      ],
+      [
+        0.2,
+        0.7,
+        0.05,
+        0.5
+      ],
+      [
+        0.95,
+        0.4,
+        0.8,
+        0.3
+      ]
+    ]
+  },
+  "resources": {
+    "external": {
+      "1": {
+        "kind": "ext_resource",
+        "type": "Script",
+        "path": "res://Scripts/ElevatorLoader.gd",
+        "id": "1",
+        "source_line": 3,
+        "properties": {},
+        "body_godot": ""
+      },
+      "2": {
+        "kind": "ext_resource",
+        "type": "Texture2D",
+        "uid": "uid://b2y1kd4motegj",
+        "path": "res://Sprites/ElevatorBack.png",
+        "id": "2",
+        "source_line": 4,
+        "properties": {},
+        "body_godot": ""
+      },
+      "3": {
+        "kind": "ext_resource",
+        "type": "Script",
+        "path": "res://Scripts/SpriteShake.cs",
+        "id": "3",
+        "source_line": 5,
+        "properties": {},
+        "body_godot": ""
+      },
+      "4": {
+        "kind": "ext_resource",
+        "type": "Texture2D",
+        "uid": "uid://culqi7uw5cvlg",
+        "path": "res://Sprites/ElevatorPomp.png",
+        "id": "4",
+        "source_line": 6,
+        "properties": {},
+        "body_godot": ""
+      },
+      "5": {
+        "kind": "ext_resource",
+        "type": "Texture2D",
+        "uid": "uid://b2sa4u2tdrnkv",
+        "path": "res://Sprites/UI/Gear2.png",
+        "id": "5",
+        "source_line": 7,
+        "properties": {},
+        "body_godot": ""
+      },
+      "6": {
+        "kind": "ext_resource",
+        "type": "Script",
+        "path": "res://Scripts/Tweener2D.cs",
+        "id": "6",
+        "source_line": 8,
+        "properties": {},
+        "body_godot": ""
+      },
+      "7": {
+        "kind": "ext_resource",
+        "type": "Texture2D",
+        "uid": "uid://c7idqyeet781a",
+        "path": "res://Sprites/ElevatorPompFrames.png",
+        "id": "7",
+        "source_line": 9,
+        "properties": {},
+        "body_godot": ""
+      },
+      "8": {
+        "kind": "ext_resource",
+        "type": "Script",
+        "path": "res://Scripts/SlidingUp.gd",
+        "id": "8",
+        "source_line": 10,
+        "properties": {},
+        "body_godot": ""
+      },
+      "9": {
+        "kind": "ext_resource",
+        "type": "Material",
+        "uid": "uid://cspuorn8a078l",
+        "path": "res://PSX.tres",
+        "id": "9",
+        "source_line": 11,
+        "properties": {},
+        "body_godot": ""
+      },
+      "10": {
+        "kind": "ext_resource",
+        "type": "AudioStream",
+        "uid": "uid://cd4uu4r1ekj8f",
+        "path": "res://Music/DownWeGo.ogg",
+        "id": "10",
+        "source_line": 12,
+        "properties": {},
+        "body_godot": ""
+      },
+      "11": {
+        "kind": "ext_resource",
+        "type": "AudioStream",
+        "uid": "uid://d2qfwddmqtxob",
+        "path": "res://Sounds/Machinery.ogg",
+        "id": "11",
+        "source_line": 13,
+        "properties": {},
+        "body_godot": ""
+      }
+    },
+    "subresources": {
+      "Animation_xxdl6": {
+        "kind": "sub_resource",
+        "type": "Animation",
+        "id": "Animation_xxdl6",
+        "source_line": 15,
+        "properties": {
+          "resource_name": "ElevatorBlink",
+          "length": 4.0,
+          "loop_mode": 1,
+          "tracks/0/type": "value",
+          "tracks/0/imported": false,
+          "tracks/0/enabled": true,
+          "tracks/0/path": "NodePath(\".:frame\")",
+          "tracks/0/interp": 1,
+          "tracks/0/loop_wrap": true,
+          "tracks/0/keys": "{"
+        },
+        "body_godot": "resource_name = \"ElevatorBlink\"\nlength = 4.0\nloop_mode = 1\ntracks/0/type = \"value\"\ntracks/0/imported = false\ntracks/0/enabled = true\ntracks/0/path = NodePath(\".:frame\")\ntracks/0/interp = 1\ntracks/0/loop_wrap = true\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 1.6, 1.7, 1.8, 1.9, 2),\n\"transitions\": PackedFloat32Array(1, 1, 1, 1, 1, 1),\n\"update\": 1,\n\"values\": [0, 0, 1, 2, 1, 0]\n}"
+      },
+      "Animation_wm66a": {
+        "kind": "sub_resource",
+        "type": "Animation",
+        "id": "Animation_wm66a",
+        "source_line": 32,
+        "properties": {
+          "length": 0.001,
+          "tracks/0/type": "value",
+          "tracks/0/imported": false,
+          "tracks/0/enabled": true,
+          "tracks/0/path": "NodePath(\".:frame\")",
+          "tracks/0/interp": 1,
+          "tracks/0/loop_wrap": true,
+          "tracks/0/keys": "{"
+        },
+        "body_godot": "length = 0.001\ntracks/0/type = \"value\"\ntracks/0/imported = false\ntracks/0/enabled = true\ntracks/0/path = NodePath(\".:frame\")\ntracks/0/interp = 1\ntracks/0/loop_wrap = true\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0),\n\"transitions\": PackedFloat32Array(1),\n\"update\": 1,\n\"values\": [0]\n}"
+      },
+      "AnimationLibrary_8jnqc": {
+        "kind": "sub_resource",
+        "type": "AnimationLibrary",
+        "id": "AnimationLibrary_8jnqc",
+        "source_line": 47,
+        "properties": {
+          "_data": "{"
+        },
+        "body_godot": "_data = {\n\"ElevatorBlink\": SubResource(\"Animation_xxdl6\"),\n\"RESET\": SubResource(\"Animation_wm66a\")\n}"
+      },
+      "Environment_f7xf4": {
+        "kind": "sub_resource",
+        "type": "Environment",
+        "id": "Environment_f7xf4",
+        "source_line": 53,
+        "properties": {
+          "background_mode": 3,
+          "tonemap_mode": 3,
+          "tonemap_exposure": 0.74,
+          "tonemap_white": 3.5,
+          "ssr_fade_in": 0.31058,
+          "ssr_fade_out": 0.784584,
+          "ssr_depth_tolerance": 79.21,
+          "ssao_radius": 3.93,
+          "ssao_power": 0.699775,
+          "ssao_ao_channel_affect": 1.0,
+          "ssil_radius": 11.38,
+          "ssil_intensity": 8.95,
+          "ssil_sharpness": 0.0,
+          "sdfgi_bounce_feedback": 0.0,
+          "glow_enabled": true,
+          "glow_intensity": 3.57,
+          "glow_strength": 0.0,
+          "glow_mix": 0.364,
+          "glow_bloom": 0.17,
+          "glow_blend_mode": 4,
+          "glow_hdr_threshold": 0.0,
+          "fog_density": 0.258
+        },
+        "body_godot": "background_mode = 3\ntonemap_mode = 3\ntonemap_exposure = 0.74\ntonemap_white = 3.5\nssr_fade_in = 0.31058\nssr_fade_out = 0.784584\nssr_depth_tolerance = 79.21\nssao_radius = 3.93\nssao_power = 0.699775\nssao_ao_channel_affect = 1.0\nssil_radius = 11.38\nssil_intensity = 8.95\nssil_sharpness = 0.0\nsdfgi_bounce_feedback = 0.0\nglow_enabled = true\nglow_intensity = 3.57\nglow_strength = 0.0\nglow_mix = 0.364\nglow_bloom = 0.17\nglow_blend_mode = 4\nglow_hdr_threshold = 0.0\nfog_density = 0.258"
+      },
+      "Animation_kan0m": {
+        "kind": "sub_resource",
+        "type": "Animation",
+        "id": "Animation_kan0m",
+        "source_line": 77,
+        "properties": {
+          "resource_name": "GlowChange",
+          "length": 5.0,
+          "loop_mode": 1,
+          "tracks/0/type": "value",
+          "tracks/0/imported": false,
+          "tracks/0/enabled": true,
+          "tracks/0/path": "NodePath(\".:environment:glow_strength\")",
+          "tracks/0/interp": 1,
+          "tracks/0/loop_wrap": true,
+          "tracks/0/keys": "{"
+        },
+        "body_godot": "resource_name = \"GlowChange\"\nlength = 5.0\nloop_mode = 1\ntracks/0/type = \"value\"\ntracks/0/imported = false\ntracks/0/enabled = true\ntracks/0/path = NodePath(\".:environment:glow_strength\")\ntracks/0/interp = 1\ntracks/0/loop_wrap = true\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 2, 2.6, 3.6, 4.2, 5),\n\"transitions\": PackedFloat32Array(1, 0.258816, 0.210224, 0.392292, 1, 1),\n\"update\": 0,\n\"values\": [0.0, 0.0, 1.5, 1.5, 0.0, 0.0]\n}"
+      },
+      "Animation_1nuf1": {
+        "kind": "sub_resource",
+        "type": "Animation",
+        "id": "Animation_1nuf1",
+        "source_line": 94,
+        "properties": {
+          "length": 0.001,
+          "tracks/0/type": "value",
+          "tracks/0/imported": false,
+          "tracks/0/enabled": true,
+          "tracks/0/path": "NodePath(\".:environment:glow_strength\")",
+          "tracks/0/interp": 1,
+          "tracks/0/loop_wrap": true,
+          "tracks/0/keys": "{"
+        },
+        "body_godot": "length = 0.001\ntracks/0/type = \"value\"\ntracks/0/imported = false\ntracks/0/enabled = true\ntracks/0/path = NodePath(\".:environment:glow_strength\")\ntracks/0/interp = 1\ntracks/0/loop_wrap = true\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0),\n\"transitions\": PackedFloat32Array(1),\n\"update\": 0,\n\"values\": [0.0]\n}"
+      },
+      "AnimationLibrary_87yrv": {
+        "kind": "sub_resource",
+        "type": "AnimationLibrary",
+        "id": "AnimationLibrary_87yrv",
+        "source_line": 109,
+        "properties": {
+          "_data": "{"
+        },
+        "body_godot": "_data = {\n\"GlowChange\": SubResource(\"Animation_kan0m\"),\n\"RESET\": SubResource(\"Animation_1nuf1\")\n}"
+      },
+      "QuadMesh_lquqv": {
+        "kind": "sub_resource",
+        "type": "QuadMesh",
+        "id": "QuadMesh_lquqv",
+        "source_line": 115,
+        "properties": {},
+        "body_godot": ""
+      },
+      "Animation_3p8rs": {
+        "kind": "sub_resource",
+        "type": "Animation",
+        "id": "Animation_3p8rs",
+        "source_line": 117,
+        "properties": {
+          "length": 0.001,
+          "tracks/0/type": "value",
+          "tracks/0/imported": false,
+          "tracks/0/enabled": true,
+          "tracks/0/path": "NodePath(\"MeshInstance2D5:position\")",
+          "tracks/0/interp": 1,
+          "tracks/0/loop_wrap": true,
+          "tracks/0/keys": "{",
+          "tracks/1/type": "value",
+          "tracks/1/imported": false,
+          "tracks/1/enabled": true,
+          "tracks/1/path": "NodePath(\"MeshInstance2D6:position\")",
+          "tracks/1/interp": 1,
+          "tracks/1/loop_wrap": true,
+          "tracks/1/keys": "{",
+          "tracks/2/type": "value",
+          "tracks/2/imported": false,
+          "tracks/2/enabled": true,
+          "tracks/2/path": "NodePath(\"AudioStreamPlayer:volume_db\")",
+          "tracks/2/interp": 1,
+          "tracks/2/loop_wrap": true,
+          "tracks/2/keys": "{"
+        },
+        "body_godot": "length = 0.001\ntracks/0/type = \"value\"\ntracks/0/imported = false\ntracks/0/enabled = true\ntracks/0/path = NodePath(\"MeshInstance2D5:position\")\ntracks/0/interp = 1\ntracks/0/loop_wrap = true\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0),\n\"transitions\": PackedFloat32Array(1),\n\"update\": 0,\n\"values\": [Vector2(485.25, 275.75)]\n}\ntracks/1/type = \"value\"\ntracks/1/imported = false\ntracks/1/enabled = true\ntracks/1/path = NodePath(\"MeshInstance2D6:position\")\ntracks/1/interp = 1\ntracks/1/loop_wrap = true\ntracks/1/keys = {\n\"times\": PackedFloat32Array(0),\n\"transitions\": PackedFloat32Array(1),\n\"update\": 0,\n\"values\": [Vector2(485.25, 870)]\n}\ntracks/2/type = \"value\"\ntracks/2/imported = false\ntracks/2/enabled = true\ntracks/2/path = NodePath(\"AudioStreamPlayer:volume_db\")\ntracks/2/interp = 1\ntracks/2/loop_wrap = true\ntracks/2/keys = {\n\"times\": PackedFloat32Array(0),\n\"transitions\": PackedFloat32Array(1),\n\"update\": 0,\n\"values\": [-26.38]\n}"
+      },
+      "Animation_3uqee": {
+        "kind": "sub_resource",
+        "type": "Animation",
+        "id": "Animation_3uqee",
+        "source_line": 156,
+        "properties": {
+          "resource_name": "Transition",
+          "length": 7.0,
+          "tracks/0/type": "value",
+          "tracks/0/imported": false,
+          "tracks/0/enabled": true,
+          "tracks/0/path": "NodePath(\"MeshInstance2D5:position\")",
+          "tracks/0/interp": 1,
+          "tracks/0/loop_wrap": true,
+          "tracks/0/keys": "{",
+          "tracks/1/type": "value",
+          "tracks/1/imported": false,
+          "tracks/1/enabled": true,
+          "tracks/1/path": "NodePath(\"MeshInstance2D6:position\")",
+          "tracks/1/interp": 1,
+          "tracks/1/loop_wrap": true,
+          "tracks/1/keys": "{",
+          "tracks/2/type": "method",
+          "tracks/2/imported": false,
+          "tracks/2/enabled": true,
+          "tracks/2/path": "NodePath(\"SceneLoader\")",
+          "tracks/2/interp": 1,
+          "tracks/2/loop_wrap": true,
+          "tracks/2/keys": "{",
+          "tracks/3/type": "value",
+          "tracks/3/imported": false,
+          "tracks/3/enabled": true,
+          "tracks/3/path": "NodePath(\"AudioStreamPlayer:volume_db\")",
+          "tracks/3/interp": 1,
+          "tracks/3/loop_wrap": true,
+          "tracks/3/keys": "{"
+        },
+        "body_godot": "resource_name = \"Transition\"\nlength = 7.0\ntracks/0/type = \"value\"\ntracks/0/imported = false\ntracks/0/enabled = true\ntracks/0/path = NodePath(\"MeshInstance2D5:position\")\ntracks/0/interp = 1\ntracks/0/loop_wrap = true\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 2),\n\"transitions\": PackedFloat32Array(1, 1),\n\"update\": 0,\n\"values\": [Vector2(485.25, 275.75), Vector2(485.25, -346)]\n}\ntracks/1/type = \"value\"\ntracks/1/imported = false\ntracks/1/enabled = true\ntracks/1/path = NodePath(\"MeshInstance2D6:position\")\ntracks/1/interp = 1\ntracks/1/loop_wrap = true\ntracks/1/keys = {\n\"times\": PackedFloat32Array(5, 7),\n\"transitions\": PackedFloat32Array(1, 1),\n\"update\": 0,\n\"values\": [Vector2(485.25, 1100), Vector2(485.25, 276)]\n}\ntracks/2/type = \"method\"\ntracks/2/imported = false\ntracks/2/enabled = true\ntracks/2/path = NodePath(\"SceneLoader\")\ntracks/2/interp = 1\ntracks/2/loop_wrap = true\ntracks/2/keys = {\n\"times\": PackedFloat32Array(7),\n\"transitions\": PackedFloat32Array(1),\n\"values\": [{\n\"args\": [],\n\"method\": &\"Load\"\n}]\n}\ntracks/3/type = \"value\"\ntracks/3/imported = false\ntracks/3/enabled = true\ntracks/3/path = NodePath(\"AudioStreamPlayer:volume_db\")\ntracks/3/interp = 1\ntracks/3/loop_wrap = true\ntracks/3/keys = {\n\"times\": PackedFloat32Array(0, 4.2),\n\"transitions\": PackedFloat32Array(1, 1),\n\"update\": 0,\n\"values\": [-26.38, -13.9]\n}"
+      },
+      "AnimationLibrary_1oqhs": {
+        "kind": "sub_resource",
+        "type": "AnimationLibrary",
+        "id": "AnimationLibrary_1oqhs",
+        "source_line": 210,
+        "properties": {
+          "_data": "{"
+        },
+        "body_godot": "_data = {\n\"RESET\": SubResource(\"Animation_3p8rs\"),\n\"Transition\": SubResource(\"Animation_3uqee\")\n}"
+      },
+      "QuadMesh_iwd0u": {
+        "kind": "sub_resource",
+        "type": "QuadMesh",
+        "id": "QuadMesh_iwd0u",
+        "source_line": 216,
+        "properties": {},
+        "body_godot": ""
+      }
+    }
+  },
+  "provenance": {
+    "extraction": "GDRE Tools 2.7.4",
+    "engine_reference": "Godot 4.3 stable Forward+ Vulkan",
+    "capture_note": "Reconstructed scene, C# motion translated to equivalent GDScript; scene Load disabled; random shake sequences differ between runs. Not a capture of the Steam executable."
+  }
+}

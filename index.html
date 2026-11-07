@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="qnichi / me">
+  <meta property="og:type" content="website">
+  <title>me</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/VCR-OSD-Mono.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main id="site">
+  <section id="scene" data-site-screen aria-label="DOGMATICA">
+    <canvas id="crt" aria-hidden="true"></canvas>
+    <div class="accessible-terminal" role="region" aria-label="Console contents">
+      <p>uname: qnichi</p><p>Uptime: 17y</p><p>C enjoyer</p>
+      <p>CPU: soon</p><p>GPU: soon</p>
+      <p id="terminal-hint">Click the console or start typing. Type help and press Enter. Use the up and down arrows for command history. Press Escape to stop typing.</p>
+      <div id="terminal-transcript" role="log" aria-live="polite" aria-label="Command output"></div>
+    </div>
+    <textarea id="command-input" aria-label="Terminal command" aria-describedby="terminal-hint" rows="1" maxlength="512" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send"></textarea>
+    <p id="error" hidden>Enable WebGL in your browser to view this scene.</p>
+    <noscript>Enable JavaScript to view the animated scene.</noscript>
+    <div class="scroll-hint" aria-label="Scroll to the next screen"><span>SCROLL</span><span aria-hidden="true">↓</span></div>
+  </section>
+  <section id="screen-02" data-site-screen class="moon-screen" aria-label="Moon overlook" hidden>
+    <canvas id="moon-stage" role="img" aria-label="A violet moon with a red iris above a dark horizon, reflected in a red and purple patterned surface."></canvas>
+    <div id="hex-input" role="group" tabindex="0" aria-label="Draw constellations in the sky" aria-describedby="hex-help" inert></div>
+    <output id="hex-signature" aria-live="polite" aria-label="Drawn pattern" data-state="idle"></output>
+    <p id="hex-help" class="accessible-terminal">Move near the stars to reveal the grid. Hold and drag to draw, then release. Backtrack to undo the last line. Press Escape to cancel. Pattern hints are stored in the console's files.</p>
+    <p id="moon-error" hidden>Enable WebGL 2 in your browser to view the moon.</p>
+    <a class="moon-return" href="#scene" data-screen-target="scene">↑ Back to the console</a>
+  </section>
+  </main>
+  <div id="screen-scroll-track" aria-hidden="true"></div>
+  <div id="elevator-overlay" aria-hidden="true"><canvas id="elevator-stage" aria-hidden="true"></canvas></div>
+  <script type="module" src="./scene.js"></script>
+  <script type="module" src="./screen-flow.js"></script>
+  <script type="module" src="./moon-scene.js"></script>
+</body>
+</html>

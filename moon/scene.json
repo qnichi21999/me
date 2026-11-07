@@ -1,0 +1,296 @@
+{
+  "game": "Psychopomp GOLD",
+  "steam_app_id": 3243190,
+  "scene": "res://Scenes/HospitalSecret.tscn",
+  "finding": {
+    "apparent_floor": "lower part of static equirectangular sky panorama",
+    "panorama": "res://Skyboxes/Purple.png",
+    "reflection": "separate flipped Sprite3D Moon2",
+    "animated_floor_uv": false,
+    "physical_reflective_plane_for_moon": false,
+    "psx_changes_dark_panorama_into_red_purple_pattern": true
+  },
+  "viewport": {
+    "width": 960,
+    "height": 540,
+    "stretch": "viewport"
+  },
+  "sky": {
+    "texture": "assets/Purple.png",
+    "texture_size": [
+      1920,
+      1080
+    ],
+    "full_image_used": true,
+    "material": "PanoramaSkyMaterial",
+    "filter": "linear",
+    "background_energy_multiplier": 1.03,
+    "material_energy_multiplier": 1,
+    "rotation_radians": [
+      0,
+      0,
+      0
+    ],
+    "uv": "u=positive(atan2(d.x,-d.z))/(2*pi); v=acos(d.y)/pi",
+    "static": true
+  },
+  "environment_verified": {
+    "adjustment_brightness": 1.25999999046326,
+    "adjustment_contrast": 1.10000002384186,
+    "adjustment_enabled": false,
+    "background_energy_multiplier": 1.02999997138977,
+    "background_mode": 2,
+    "camera_example_position": "Vector3(-31.5, -1.629, 0.5)",
+    "camera_example_rotation": "Vector3(0, 1.5708, 0)",
+    "camera_far": 700,
+    "camera_fov": 70,
+    "camera_keep_aspect": 1,
+    "camera_near": 0.0500000007450581,
+    "engine": {
+      "build": "official",
+      "hash": "77dcf97d82cbfe4e4615475fa52ca03da645dbd8",
+      "hex": 262912,
+      "major": 4,
+      "minor": 3,
+      "patch": 0,
+      "status": "stable",
+      "string": "4.3-stable (official)",
+      "timestamp": 0
+    },
+    "fog_density": 0.100299999117851,
+    "fog_enabled": false,
+    "glow_enabled": false,
+    "reference_note": "Example camera selected near moon overlook. Camera position is not fixed in original game. Hospital architecture, NPCs and HUD omitted.",
+    "sky_energy_multiplier": 1,
+    "sky_filter": true,
+    "sky_rotation": "Vector3(0, 0, 0)",
+    "ssr_enabled": false,
+    "tonemap_exposure": 1,
+    "tonemap_mode": 0,
+    "tonemap_white": 8.27999973297119
+  },
+  "camera_source": {
+    "fov_vertical_degrees": 70,
+    "near": 0.05,
+    "far": 700,
+    "keep_aspect": 1,
+    "cull_mask": 1048559,
+    "local_height_offset": 0.371,
+    "player_controlled": true
+  },
+  "camera_example": {
+    "position": [
+      -31.5,
+      -1.629,
+      0.5
+    ],
+    "rotation_radians": [
+      0,
+      1.5707963267948966,
+      0
+    ],
+    "source": "selected for isolated reference; not a fixed pose in original scene"
+  },
+  "sprites": [
+    {
+      "name": "Moon",
+      "position": [
+        -164.781,
+        39.6128,
+        45.4146
+      ],
+      "basis_columns": [
+        [
+          -15.0396,
+          0,
+          22.383
+        ],
+        [
+          0,
+          26.9665,
+          0
+        ],
+        [
+          -22.383,
+          0,
+          -15.0396
+        ]
+      ],
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "motion_delta": [
+        0,
+        10,
+        0
+      ]
+    },
+    {
+      "name": "Moon2",
+      "position": [
+        -164.781,
+        -63.5427,
+        45.4146
+      ],
+      "basis_columns": [
+        [
+          -15.0396,
+          0,
+          22.383
+        ],
+        [
+          0,
+          -25.5784,
+          0
+        ],
+        [
+          -22.383,
+          0,
+          -15.0396
+        ]
+      ],
+      "modulate_rgba": [
+        1,
+        1,
+        1,
+        0.0235294
+      ],
+      "motion_delta": [
+        0,
+        -10,
+        0
+      ]
+    }
+  ],
+  "sprite_settings": {
+    "texture": "assets/Moon.png",
+    "texture_size": [
+      284,
+      284
+    ],
+    "quad_size": [
+      2.84,
+      2.84
+    ],
+    "pixel_size": 0.01,
+    "axis": "+Z",
+    "billboard": 0,
+    "unlit": true,
+    "double_sided": true,
+    "alpha_blend": true,
+    "filter": "linear with mipmaps"
+  },
+  "motion": {
+    "one_leg_seconds": 10,
+    "period_seconds": 20,
+    "transition": "QUAD",
+    "ease": "IN_OUT",
+    "return_to_initial": true,
+    "baked_into_glb": false
+  },
+  "psx": {
+    "enabled": true,
+    "dithering": true,
+    "colors": 8,
+    "depth_argument": 7,
+    "dither_size": 1,
+    "rect": [
+      0,
+      0,
+      969,
+      538
+    ],
+    "matrix": [
+      [
+        0,
+        0.5,
+        0.1,
+        0.65
+      ],
+      [
+        0.75,
+        0.25,
+        0.9,
+        0.35
+      ],
+      [
+        0.2,
+        0.7,
+        0.05,
+        0.5
+      ],
+      [
+        0.95,
+        0.4,
+        0.8,
+        0.3
+      ]
+    ],
+    "threshold_formula": "(p - 0.5) * p + 0.5",
+    "threshold_multiplier": 0.999,
+    "disabled_by_render_checker_in": "gl_compatibility"
+  },
+  "unused_low_fog": {
+    "visible": false,
+    "shader": "res://Shaders/TextureScroll.tres",
+    "Speed": 0.025,
+    "position": [
+      -33.7868,
+      -3.7337,
+      3.06919
+    ],
+    "scale": [
+      14.8976,
+      4.00819,
+      17.8656
+    ]
+  },
+  "physical_central_floor_not_the_apparent_moon_surface": {
+    "type": "PlaneMesh",
+    "base_size": [
+      2,
+      2
+    ],
+    "scale": [
+      6.9,
+      6.9,
+      6.9
+    ],
+    "position": [
+      0,
+      0.901533,
+      0
+    ],
+    "geometry_instance_transparency": 0.13,
+    "material_albedo": "res://textures/Marble.png"
+  },
+  "not_in_reference": [
+    "hospital architecture/window frame",
+    "NPCs",
+    "HUD and weapon",
+    "actual user gameplay camera pose"
+  ],
+  "derived_only": {
+    "moon_reflection_midplane_y": -11.96495
+  },
+  "assets": [
+    {
+      "file": "assets/HospitalMoon_scene.glb",
+      "bytes": 246868,
+      "sha256": "d102810f4f9f869679cb836f2c8b70dac817c070e762941379a2db9e035a6441"
+    },
+    {
+      "file": "assets/Moon.png",
+      "bytes": 121100,
+      "sha256": "1ab3f78f33e1dcbfccf2000dca39a76989697ed355cedd3eafaee7129838da3f"
+    },
+    {
+      "file": "assets/Purple.png",
+      "bytes": 1061890,
+      "sha256": "8e65d134378ec8ed8c58f9e045d53d88315f2912047c220db150ab219b390ff9"
+    }
+  ]
+}
