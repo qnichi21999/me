@@ -24,7 +24,7 @@
     <textarea id="command-input" aria-label="Terminal command" aria-describedby="terminal-hint" rows="1" maxlength="512" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send"></textarea>
     <p id="error" hidden>Enable WebGL in your browser to view this scene.</p>
     <noscript>Enable JavaScript to view the animated scene.</noscript>
-    <div class="scroll-hint" aria-label="Scroll to the next screen"><span>SCROLL</span><span aria-hidden="true">↓</span></div>
+    <div class="scroll-hint" aria-label="Scroll to the next screen"><span aria-hidden="true">↓</span></div>
   </section>
   <section id="screen-02" data-site-screen data-scroll-hold="1" class="moon-screen" aria-label="Moon overlook" hidden>
     <canvas id="moon-stage" role="img" aria-label="A violet moon with a red iris above a dark horizon, reflected in a red and purple patterned surface."></canvas>
@@ -32,7 +32,6 @@
     <output id="hex-signature" aria-live="polite" aria-label="Drawn pattern" data-state="idle"></output>
     <p id="hex-help" class="accessible-terminal">Move near the stars to reveal the grid. Hold and drag to draw, then release. Backtrack to undo the last line. Press Escape to cancel. Pattern hints are stored in the console's files.</p>
     <p id="moon-error" hidden>Enable WebGL 2 in your browser to view the moon.</p>
-    <a class="moon-return" href="#scene" data-screen-target="scene">↑ Back to the console</a>
   </section>
   <section id="pebbles" data-site-screen aria-label="Five Pebbles' chamber" hidden>
     <div class="pebbles-stage">
@@ -45,7 +44,6 @@
     </div>
     <p id="pebbles-error" role="status" hidden>The chamber could not be loaded.</p>
     <p id="pebbles-dialogue-error" role="status" hidden>Could not load the dialogue.</p>
-    <a class="moon-return" href="#screen-02" data-screen-target="screen-02">↑ Back to the moon</a>
   </section>
   </main>
   <div id="screen-scroll-track" aria-hidden="true"></div>
