@@ -1,57 +1,12 @@
-const W = 2048, H = 1162;
-const quad = new Float32Array([-.5,-.5,.5,-.5,-.5,.5,-.5,.5,.5,-.5,.5,.5]);
-
-export class WireMesh {
-  constructor() { this.data = new Float32Array(600000); this.count = 0; }
-  reset() { this.count = 0; }
-  add(points, color, width, feather, progress=1, reverse=false, offsetX=0, offsetY=0) {
-    const core = width / 2, extent = core + feather;
-    const r = parseInt(color.slice(1,3),16)/255;
-    const g = parseInt(color.slice(3,5),16)/255;
-    const b = parseInt(color.slice(5,7),16)/255;
-    const emit = (x,y,edge) => {
-      const n = this.count;
-      this.data[n]=x+offsetX;this.data[n+1]=y+offsetY;this.data[n+2]=r;this.data[n+3]=g;
-      this.data[n+4]=b;this.data[n+5]=edge;this.data[n+6]=core;this.count+=7;
-    };
-    const end=points.length-1,travel=end*Math.max(0,Math.min(1,progress));
-    for(let i=0;i<Math.ceil(travel);i++) {
-      const a=points[reverse?end-i:i],b=points[reverse?end-i-1:i+1];
-      const fraction=Math.min(1,travel-i),bx=a.rx+(b.rx-a.rx)*fraction,by=a.ry+(b.ry-a.ry)*fraction;
-      const dx=bx-a.rx,dy=by-a.ry,length=Math.hypot(dx,dy)||1;
-      const nx=-dy/length*extent,ny=dx/length*extent;
-      emit(a.rx+nx,a.ry+ny,extent);emit(a.rx-nx,a.ry-ny,-extent);emit(bx+nx,by+ny,extent);
-      emit(bx+nx,by+ny,extent);emit(a.rx-nx,a.ry-ny,-extent);emit(bx-nx,by-ny,-extent);
-    }
-  }
-}
-
-export class GPURenderer {
-  constructor(canvas) {
-    this.canvas=canvas;
-    const gl=this.gl=canvas.getContext('webgl', {alpha:false,antialias:false,depth:false,stencil:false,powerPreference:'high-performance'});
-    if(!gl)throw Error('WebGL unavailable');
-    const program=(vs,fs)=>{
-      const p=gl.createProgram();
-      for(const [type,source] of [[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]]){
-        const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);
-        if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));
-        gl.attachShader(p,s);gl.deleteShader(s);
-      }
-      gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));
-      return p;
-    };
-    this.wires=program(`
+import{traceLine as _atlasLine}from"./code-trace.js";const W=(_atlasLine?.("f82db9978f5f172617b1:1"),2048),H=(_atlasLine?.("f82db9978f5f172617b1:1"),1162);const quad=(_atlasLine?.("f82db9978f5f172617b1:2"),new Float32Array([-.5,-.5,.5,-.5,-.5,.5,-.5,.5,.5,-.5,.5,.5]));export class WireMesh{constructor(){_atlasLine?.("f82db9978f5f172617b1:5");_atlasLine?.("f82db9978f5f172617b1:5");this.data=new Float32Array(600000);_atlasLine?.("f82db9978f5f172617b1:5");this.count=0;}reset(){_atlasLine?.("f82db9978f5f172617b1:6");_atlasLine?.("f82db9978f5f172617b1:6");this.count=0;}add(points,color,width,feather,progress=(_atlasLine?.("f82db9978f5f172617b1:7"),1),reverse=(_atlasLine?.("f82db9978f5f172617b1:7"),false),offsetX=(_atlasLine?.("f82db9978f5f172617b1:7"),0),offsetY=(_atlasLine?.("f82db9978f5f172617b1:7"),0)){_atlasLine?.("f82db9978f5f172617b1:7");const core=(_atlasLine?.("f82db9978f5f172617b1:8"),width/2),extent=(_atlasLine?.("f82db9978f5f172617b1:8"),core+feather);const r=(_atlasLine?.("f82db9978f5f172617b1:9"),parseInt(color.slice(1,3),16)/255);const g=(_atlasLine?.("f82db9978f5f172617b1:10"),parseInt(color.slice(3,5),16)/255);const b=(_atlasLine?.("f82db9978f5f172617b1:11"),parseInt(color.slice(5,7),16)/255);_atlasLine?.("f82db9978f5f172617b1:12");const emit=(x,y,edge)=>{_atlasLine?.("f82db9978f5f172617b1:12");const n=(_atlasLine?.("f82db9978f5f172617b1:13"),this.count);_atlasLine?.("f82db9978f5f172617b1:14");this.data[n]=x+offsetX;_atlasLine?.("f82db9978f5f172617b1:14");this.data[n+1]=y+offsetY;_atlasLine?.("f82db9978f5f172617b1:14");this.data[n+2]=r;_atlasLine?.("f82db9978f5f172617b1:14");this.data[n+3]=g;_atlasLine?.("f82db9978f5f172617b1:15");this.data[n+4]=b;_atlasLine?.("f82db9978f5f172617b1:15");this.data[n+5]=edge;_atlasLine?.("f82db9978f5f172617b1:15");this.data[n+6]=core;_atlasLine?.("f82db9978f5f172617b1:15");this.count+=7;};const end=(_atlasLine?.("f82db9978f5f172617b1:17"),points.length-1),travel=(_atlasLine?.("f82db9978f5f172617b1:17"),end*Math.max(0,Math.min(1,progress)));_atlasLine?.("f82db9978f5f172617b1:18");for(let i=(_atlasLine?.("f82db9978f5f172617b1:18"),0);i<Math.ceil(travel);i++){const a=(_atlasLine?.("f82db9978f5f172617b1:19"),points[reverse?(_atlasLine?.("f82db9978f5f172617b1:19"),end-i):(_atlasLine?.("f82db9978f5f172617b1:19"),i)]),b=(_atlasLine?.("f82db9978f5f172617b1:19"),points[reverse?(_atlasLine?.("f82db9978f5f172617b1:19"),end-i-1):(_atlasLine?.("f82db9978f5f172617b1:19"),i+1)]);const fraction=(_atlasLine?.("f82db9978f5f172617b1:20"),Math.min(1,travel-i)),bx=(_atlasLine?.("f82db9978f5f172617b1:20"),a.rx+(b.rx-a.rx)*fraction),by=(_atlasLine?.("f82db9978f5f172617b1:20"),a.ry+(b.ry-a.ry)*fraction);const dx=(_atlasLine?.("f82db9978f5f172617b1:21"),bx-a.rx),dy=(_atlasLine?.("f82db9978f5f172617b1:21"),by-a.ry),length=(_atlasLine?.("f82db9978f5f172617b1:21"),(_atlasLine?.("f82db9978f5f172617b1:21"),Math.hypot(dx,dy))||(_atlasLine?.("f82db9978f5f172617b1:21"),1));const nx=(_atlasLine?.("f82db9978f5f172617b1:22"),-dy/length*extent),ny=(_atlasLine?.("f82db9978f5f172617b1:22"),dx/length*extent);_atlasLine?.("f82db9978f5f172617b1:23");emit(a.rx+nx,a.ry+ny,extent);_atlasLine?.("f82db9978f5f172617b1:23");emit(a.rx-nx,a.ry-ny,-extent);_atlasLine?.("f82db9978f5f172617b1:23");emit(bx+nx,by+ny,extent);_atlasLine?.("f82db9978f5f172617b1:24");emit(bx+nx,by+ny,extent);_atlasLine?.("f82db9978f5f172617b1:24");emit(a.rx-nx,a.ry-ny,-extent);_atlasLine?.("f82db9978f5f172617b1:24");emit(bx-nx,by-ny,-extent);}}}export class GPURenderer{constructor(canvas){_atlasLine?.("f82db9978f5f172617b1:30");_atlasLine?.("f82db9978f5f172617b1:31");this.canvas=canvas;const gl=(_atlasLine?.("f82db9978f5f172617b1:32"),this.gl=canvas.getContext('webgl',{alpha:false,antialias:false,depth:false,stencil:false,powerPreference:'high-performance'}));_atlasLine?.("f82db9978f5f172617b1:33");if(!gl){_atlasLine?.("f82db9978f5f172617b1:33");_atlasLine?.("f82db9978f5f172617b1:33");throw Error('WebGL unavailable');}else{void 0;}_atlasLine?.("f82db9978f5f172617b1:34");const program=(vs,fs)=>{_atlasLine?.("f82db9978f5f172617b1:34");const p=(_atlasLine?.("f82db9978f5f172617b1:35"),gl.createProgram());_atlasLine?.("f82db9978f5f172617b1:36");for(const[type,source]of[[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]]){const s=(_atlasLine?.("f82db9978f5f172617b1:37"),gl.createShader(type));_atlasLine?.("f82db9978f5f172617b1:37");gl.shaderSource(s,source);_atlasLine?.("f82db9978f5f172617b1:37");gl.compileShader(s);_atlasLine?.("f82db9978f5f172617b1:38");if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){_atlasLine?.("f82db9978f5f172617b1:38");_atlasLine?.("f82db9978f5f172617b1:38");throw Error(gl.getShaderInfoLog(s));}else{void 0;}_atlasLine?.("f82db9978f5f172617b1:39");gl.attachShader(p,s);_atlasLine?.("f82db9978f5f172617b1:39");gl.deleteShader(s);}_atlasLine?.("f82db9978f5f172617b1:41");gl.linkProgram(p);_atlasLine?.("f82db9978f5f172617b1:41");if(!gl.getProgramParameter(p,gl.LINK_STATUS)){_atlasLine?.("f82db9978f5f172617b1:41");_atlasLine?.("f82db9978f5f172617b1:41");throw Error(gl.getProgramInfoLog(p));}else{void 0;}_atlasLine?.("f82db9978f5f172617b1:42");return p;};_atlasLine?.("f82db9978f5f172617b1:44");this.wires=program(`
       attribute vec2 position;attribute vec3 color;attribute float edge;attribute float core;
       uniform vec2 offset;varying vec3 vColor;varying float vEdge;varying float vCore;
       void main(){vec2 p=position+offset;gl_Position=vec4(p.x/1024.-1.,1.-p.y/581.,0.,1.);vColor=color;vEdge=edge;vCore=core;}
-    `,`precision mediump float;varying vec3 vColor;varying float vEdge;varying float vCore;uniform float feather;
-      void main(){float a=1.-smoothstep(vCore,vCore+feather,abs(vEdge));gl_FragColor=vec4(vColor*a,a);}`);
-    const layerVertex=`
+    `,(_atlasLine?.("f82db9978f5f172617b1:48"),`precision mediump float;varying vec3 vColor;varying float vEdge;varying float vCore;uniform float feather;
+      void main(){float a=1.-smoothstep(vCore,vCore+feather,abs(vEdge));gl_FragColor=vec4(vColor*a,a);}`));const layerVertex=(_atlasLine?.("f82db9978f5f172617b1:50"),`
       attribute vec2 position;uniform vec2 center;uniform vec2 size;uniform float angle;varying vec2 vUv;
       void main(){vec2 p=position*size;float c=cos(angle),s=sin(angle);p=vec2(p.x*c-p.y*s,p.x*s+p.y*c)+center;
-      gl_Position=vec4(p.x/1024.-1.,1.-p.y/581.,0.,1.);vUv=position+.5;}`;
-    this.layers=program(layerVertex,`precision mediump float;uniform sampler2D image;uniform float opacity;uniform float startupGlow;varying vec2 vUv;
+      gl_Position=vec4(p.x/1024.-1.,1.-p.y/581.,0.,1.);vUv=position+.5;}`);_atlasLine?.("f82db9978f5f172617b1:54");this.layers=program(layerVertex,`precision mediump float;uniform sampler2D image;uniform float opacity;uniform float startupGlow;varying vec2 vUv;
       void main(){
         vec4 col=texture2D(image,vUv);
         // Clip inside the bezel in the terminal's own coordinates, before
@@ -62,8 +17,7 @@ export class GPURenderer {
         float beam=exp(-pow((pixel.y-581.)/435.75,2.))*inside*startupGlow*1.65;
         col.rgb+=vec3(.8,.91,1.)*beam;
         gl_FragColor=col*opacity;
-      }`);
-    this.echo=program(layerVertex,`
+      }`);_atlasLine?.("f82db9978f5f172617b1:66");this.echo=program(layerVertex,`
       precision highp float;uniform sampler2D image;uniform float opacity,time,activity;varying vec2 vUv;
       float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
       float silhouette(vec2 p){vec4 c=texture2D(image,p);return smoothstep(.025,.17,max(c.r,max(c.g,c.b))*c.a);}
@@ -85,9 +39,8 @@ export class GPURenderer {
         float light=.35+.65*sqrt(max(0.,dot(ghost.rgb,vec3(.2126,.7152,.0722))));
         float alpha=ring*focus*opacity*bands*fray;
         gl_FragColor=vec4(vec3(light)*alpha,alpha);
-      }`);
-    this.post=program(`attribute vec2 position;varying vec2 vUv;
-      void main(){vUv=position+.5;gl_Position=vec4(position*2.,0.,1.);}`,`
+      }`);_atlasLine?.("f82db9978f5f172617b1:89");this.post=program(`attribute vec2 position;varying vec2 vUv;
+      void main(){vUv=position+.5;gl_Position=vec4(position*2.,0.,1.);}`,(_atlasLine?.("f82db9978f5f172617b1:90"),`
       precision highp float;varying vec2 vUv;uniform sampler2D image;uniform vec2 resolution;uniform float fit;uniform float time;
       float hash(vec2 p){vec3 p3=fract(vec3(p.xyx)*.1031);p3+=dot(p3,p3.yzx+33.33);return fract((p3.x+p3.y)*p3.z);}
       void main(){
@@ -103,85 +56,4 @@ export class GPURenderer {
         col+=(hash(floor(uv*vec2(2048.,1162.))+mod(floor(time*12.),100.))-.5)*.017;
         col*=1.-.22*pow(length(p*vec2(.76,.65)),2.);
         gl_FragColor=vec4(pow(max(col,0.),vec3(.94)),1.);
-      }`);
-    this.attributes=new Map();this.uniforms=new Map();
-    for(const p of [this.wires,this.layers,this.echo,this.post]){
-      this.attributes.set(p,Object.fromEntries(['position','color','edge','core'].map(n=>[n,gl.getAttribLocation(p,n)])));
-      this.uniforms.set(p,Object.fromEntries(['offset','feather','image','center','size','angle','opacity','resolution','fit','time','startupGlow','activity'].map(n=>[n,gl.getUniformLocation(p,n)])));
-    }
-    this.quad=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,this.quad);gl.bufferData(gl.ARRAY_BUFFER,quad,gl.STATIC_DRAW);
-    this.meshBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,this.meshBuffer);gl.bufferData(gl.ARRAY_BUFFER,600000*4,gl.DYNAMIC_DRAW);
-    this.target=gl.createFramebuffer();this.sceneTexture=this.texture();
-    gl.disable(gl.DEPTH_TEST);gl.disable(gl.CULL_FACE);
-    this.resize();
-  }
-  texture(source) {
-    const gl=this.gl,t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);
-    for(const p of [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,p,gl.CLAMP_TO_EDGE);
-    for(const p of [gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D,p,gl.LINEAR);
-    if(source){gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);}
-    return t;
-  }
-  update(texture,source,x=0,y=0){
-    const gl=this.gl;gl.bindTexture(gl.TEXTURE_2D,texture);gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);
-    gl.texSubImage2D(gl.TEXTURE_2D,0,x,y,gl.RGBA,gl.UNSIGNED_BYTE,source);
-  }
-  resize(){
-    const gl=this.gl;
-    const dpr=Math.min(devicePixelRatio||1,1.25,Math.sqrt(1500000/(innerWidth*innerHeight)));
-    this.canvas.width=Math.round(innerWidth*dpr);this.canvas.height=Math.round(innerHeight*dpr);
-    const fit=Math.min(this.canvas.width/W,this.canvas.height/H);
-    this.width=Math.min(1600,Math.max(640,Math.round(W*fit)));
-    this.height=Math.round(this.width*H/W);this.feather=W/this.width;
-    gl.bindTexture(gl.TEXTURE_2D,this.sceneTexture);
-    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,this.width,this.height,0,gl.RGBA,gl.UNSIGNED_BYTE,null);
-    gl.bindFramebuffer(gl.FRAMEBUFFER,this.target);
-    gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.sceneTexture,0);
-    if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Incomplete scene framebuffer');
-    gl.bindFramebuffer(gl.FRAMEBUFFER,null);
-  }
-  use(program,buffer){
-    const gl=this.gl;gl.useProgram(program);
-    for(let i=0;i<4;i++)gl.disableVertexAttribArray(i);
-    gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
-    return [this.attributes.get(program),this.uniforms.get(program)];
-  }
-  begin(){
-    const gl=this.gl;gl.bindFramebuffer(gl.FRAMEBUFFER,this.target);gl.viewport(0,0,this.width,this.height);
-    gl.clearColor(0,0,0,1);gl.clear(gl.COLOR_BUFFER_BIT);gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);
-  }
-  drawWires(mesh,x,y){
-    const gl=this.gl,[a,u]=this.use(this.wires,this.meshBuffer);
-    gl.bufferSubData(gl.ARRAY_BUFFER,0,mesh.data.subarray(0,mesh.count));
-    for(const [name,size,offset] of [['position',2,0],['color',3,8],['edge',1,20],['core',1,24]]){
-      gl.enableVertexAttribArray(a[name]);gl.vertexAttribPointer(a[name],size,gl.FLOAT,false,28,offset);
-    }
-    gl.uniform2f(u.offset,x,y);gl.uniform1f(u.feather,this.feather);
-    gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.drawArrays(gl.TRIANGLES,0,mesh.count/7);
-  }
-  drawLayer(texture,x,y,width,height,angle=0,opacity=1,screen=false,startupGlow=0){
-    const gl=this.gl,[a,u]=this.use(this.layers,this.quad);
-    gl.enableVertexAttribArray(a.position);gl.vertexAttribPointer(a.position,2,gl.FLOAT,false,0,0);
-    gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,texture);gl.uniform1i(u.image,0);
-    gl.uniform2f(u.center,x,y);gl.uniform2f(u.size,width,height);gl.uniform1f(u.angle,angle);gl.uniform1f(u.opacity,opacity);
-    gl.uniform1f(u.startupGlow,startupGlow);
-    gl.blendFunc(gl.ONE,screen?gl.ONE_MINUS_SRC_COLOR:gl.ONE_MINUS_SRC_ALPHA);gl.drawArrays(gl.TRIANGLES,0,6);
-  }
-  drawEcho(texture,x,y,width,height,angle,opacity,time,activity){
-    const gl=this.gl,[a,u]=this.use(this.echo,this.quad);
-    gl.enableVertexAttribArray(a.position);gl.vertexAttribPointer(a.position,2,gl.FLOAT,false,0,0);
-    gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,texture);gl.uniform1i(u.image,0);
-    gl.uniform2f(u.center,x,y);gl.uniform2f(u.size,width,height);gl.uniform1f(u.angle,angle);
-    gl.uniform1f(u.opacity,opacity);gl.uniform1f(u.time,time);gl.uniform1f(u.activity,activity);
-    gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_COLOR);gl.drawArrays(gl.TRIANGLES,0,6);
-  }
-  finish(time){
-    const gl=this.gl,[a,u]=this.use(this.post,this.quad);
-    gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,this.canvas.width,this.canvas.height);gl.disable(gl.BLEND);
-    gl.enableVertexAttribArray(a.position);gl.vertexAttribPointer(a.position,2,gl.FLOAT,false,0,0);
-    gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.sceneTexture);gl.uniform1i(u.image,0);
-    gl.uniform2f(u.resolution,this.canvas.width,this.canvas.height);
-    gl.uniform1f(u.fit,Math.min(this.canvas.width/W,this.canvas.height/H));gl.uniform1f(u.time,time);
-    gl.drawArrays(gl.TRIANGLES,0,6);
-  }
-}
+      }`));_atlasLine?.("f82db9978f5f172617b1:107");this.attributes=new Map();_atlasLine?.("f82db9978f5f172617b1:107");this.uniforms=new Map();_atlasLine?.("f82db9978f5f172617b1:108");for(const p of[this.wires,this.layers,this.echo,this.post]){_atlasLine?.("f82db9978f5f172617b1:109");this.attributes.set(p,Object.fromEntries(['position','color','edge','core'].map(n=>{_atlasLine?.("f82db9978f5f172617b1:109");_atlasLine?.("f82db9978f5f172617b1:109");return[n,gl.getAttribLocation(p,n)];})));_atlasLine?.("f82db9978f5f172617b1:110");this.uniforms.set(p,Object.fromEntries(['offset','feather','image','center','size','angle','opacity','resolution','fit','time','startupGlow','activity'].map(n=>{_atlasLine?.("f82db9978f5f172617b1:110");_atlasLine?.("f82db9978f5f172617b1:110");return[n,gl.getUniformLocation(p,n)];})));}_atlasLine?.("f82db9978f5f172617b1:112");this.quad=gl.createBuffer();_atlasLine?.("f82db9978f5f172617b1:112");gl.bindBuffer(gl.ARRAY_BUFFER,this.quad);_atlasLine?.("f82db9978f5f172617b1:112");gl.bufferData(gl.ARRAY_BUFFER,quad,gl.STATIC_DRAW);_atlasLine?.("f82db9978f5f172617b1:113");this.meshBuffer=gl.createBuffer();_atlasLine?.("f82db9978f5f172617b1:113");gl.bindBuffer(gl.ARRAY_BUFFER,this.meshBuffer);_atlasLine?.("f82db9978f5f172617b1:113");gl.bufferData(gl.ARRAY_BUFFER,600000*4,gl.DYNAMIC_DRAW);_atlasLine?.("f82db9978f5f172617b1:114");this.target=gl.createFramebuffer();_atlasLine?.("f82db9978f5f172617b1:114");this.sceneTexture=this.texture();_atlasLine?.("f82db9978f5f172617b1:115");gl.disable(gl.DEPTH_TEST);_atlasLine?.("f82db9978f5f172617b1:115");gl.disable(gl.CULL_FACE);_atlasLine?.("f82db9978f5f172617b1:116");this.resize();}texture(source){_atlasLine?.("f82db9978f5f172617b1:118");const gl=(_atlasLine?.("f82db9978f5f172617b1:119"),this.gl),t=(_atlasLine?.("f82db9978f5f172617b1:119"),gl.createTexture());_atlasLine?.("f82db9978f5f172617b1:119");gl.bindTexture(gl.TEXTURE_2D,t);_atlasLine?.("f82db9978f5f172617b1:120");for(const p of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T]){_atlasLine?.("f82db9978f5f172617b1:120");gl.texParameteri(gl.TEXTURE_2D,p,gl.CLAMP_TO_EDGE);}_atlasLine?.("f82db9978f5f172617b1:121");for(const p of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER]){_atlasLine?.("f82db9978f5f172617b1:121");gl.texParameteri(gl.TEXTURE_2D,p,gl.LINEAR);}_atlasLine?.("f82db9978f5f172617b1:122");if(source){_atlasLine?.("f82db9978f5f172617b1:122");_atlasLine?.("f82db9978f5f172617b1:122");gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);_atlasLine?.("f82db9978f5f172617b1:122");gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);}else{void 0;}_atlasLine?.("f82db9978f5f172617b1:123");return t;}update(texture,source,x=(_atlasLine?.("f82db9978f5f172617b1:125"),0),y=(_atlasLine?.("f82db9978f5f172617b1:125"),0)){_atlasLine?.("f82db9978f5f172617b1:125");const gl=(_atlasLine?.("f82db9978f5f172617b1:126"),this.gl);_atlasLine?.("f82db9978f5f172617b1:126");gl.bindTexture(gl.TEXTURE_2D,texture);_atlasLine?.("f82db9978f5f172617b1:126");gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);_atlasLine?.("f82db9978f5f172617b1:127");gl.texSubImage2D(gl.TEXTURE_2D,0,x,y,gl.RGBA,gl.UNSIGNED_BYTE,source);}resize(){_atlasLine?.("f82db9978f5f172617b1:129");const gl=(_atlasLine?.("f82db9978f5f172617b1:130"),this.gl);const dpr=(_atlasLine?.("f82db9978f5f172617b1:131"),Math.min((_atlasLine?.("f82db9978f5f172617b1:131"),devicePixelRatio)||(_atlasLine?.("f82db9978f5f172617b1:131"),1),1.25,Math.sqrt(1500000/(innerWidth*innerHeight))));_atlasLine?.("f82db9978f5f172617b1:132");this.canvas.width=Math.round(innerWidth*dpr);_atlasLine?.("f82db9978f5f172617b1:132");this.canvas.height=Math.round(innerHeight*dpr);const fit=(_atlasLine?.("f82db9978f5f172617b1:133"),Math.min(this.canvas.width/W,this.canvas.height/H));_atlasLine?.("f82db9978f5f172617b1:134");this.width=Math.min(1600,Math.max(640,Math.round(W*fit)));_atlasLine?.("f82db9978f5f172617b1:135");this.height=Math.round(this.width*H/W);_atlasLine?.("f82db9978f5f172617b1:135");this.feather=W/this.width;_atlasLine?.("f82db9978f5f172617b1:136");gl.bindTexture(gl.TEXTURE_2D,this.sceneTexture);_atlasLine?.("f82db9978f5f172617b1:137");gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,this.width,this.height,0,gl.RGBA,gl.UNSIGNED_BYTE,null);_atlasLine?.("f82db9978f5f172617b1:138");gl.bindFramebuffer(gl.FRAMEBUFFER,this.target);_atlasLine?.("f82db9978f5f172617b1:139");gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.sceneTexture,0);_atlasLine?.("f82db9978f5f172617b1:140");if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE){_atlasLine?.("f82db9978f5f172617b1:140");_atlasLine?.("f82db9978f5f172617b1:140");throw Error('Incomplete scene framebuffer');}else{void 0;}_atlasLine?.("f82db9978f5f172617b1:141");gl.bindFramebuffer(gl.FRAMEBUFFER,null);}use(program,buffer){_atlasLine?.("f82db9978f5f172617b1:143");const gl=(_atlasLine?.("f82db9978f5f172617b1:144"),this.gl);_atlasLine?.("f82db9978f5f172617b1:144");gl.useProgram(program);_atlasLine?.("f82db9978f5f172617b1:145");for(let i=(_atlasLine?.("f82db9978f5f172617b1:145"),0);i<4;i++){_atlasLine?.("f82db9978f5f172617b1:145");gl.disableVertexAttribArray(i);}_atlasLine?.("f82db9978f5f172617b1:146");gl.bindBuffer(gl.ARRAY_BUFFER,buffer);_atlasLine?.("f82db9978f5f172617b1:147");return[this.attributes.get(program),this.uniforms.get(program)];}begin(){_atlasLine?.("f82db9978f5f172617b1:149");const gl=(_atlasLine?.("f82db9978f5f172617b1:150"),this.gl);_atlasLine?.("f82db9978f5f172617b1:150");gl.bindFramebuffer(gl.FRAMEBUFFER,this.target);_atlasLine?.("f82db9978f5f172617b1:150");gl.viewport(0,0,this.width,this.height);_atlasLine?.("f82db9978f5f172617b1:151");gl.clearColor(0,0,0,1);_atlasLine?.("f82db9978f5f172617b1:151");gl.clear(gl.COLOR_BUFFER_BIT);_atlasLine?.("f82db9978f5f172617b1:151");gl.enable(gl.BLEND);_atlasLine?.("f82db9978f5f172617b1:151");gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);}drawWires(mesh,x,y){_atlasLine?.("f82db9978f5f172617b1:153");const gl=(_atlasLine?.("f82db9978f5f172617b1:154"),this.gl),[a,u]=(_atlasLine?.("f82db9978f5f172617b1:154"),this.use(this.wires,this.meshBuffer));_atlasLine?.("f82db9978f5f172617b1:155");gl.bufferSubData(gl.ARRAY_BUFFER,0,mesh.data.subarray(0,mesh.count));_atlasLine?.("f82db9978f5f172617b1:156");for(const[name,size,offset]of[['position',2,0],['color',3,8],['edge',1,20],['core',1,24]]){_atlasLine?.("f82db9978f5f172617b1:157");gl.enableVertexAttribArray(a[name]);_atlasLine?.("f82db9978f5f172617b1:157");gl.vertexAttribPointer(a[name],size,gl.FLOAT,false,28,offset);}_atlasLine?.("f82db9978f5f172617b1:159");gl.uniform2f(u.offset,x,y);_atlasLine?.("f82db9978f5f172617b1:159");gl.uniform1f(u.feather,this.feather);_atlasLine?.("f82db9978f5f172617b1:160");gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);_atlasLine?.("f82db9978f5f172617b1:160");gl.drawArrays(gl.TRIANGLES,0,mesh.count/7);}drawLayer(texture,x,y,width,height,angle=(_atlasLine?.("f82db9978f5f172617b1:162"),0),opacity=(_atlasLine?.("f82db9978f5f172617b1:162"),1),screen=(_atlasLine?.("f82db9978f5f172617b1:162"),false),startupGlow=(_atlasLine?.("f82db9978f5f172617b1:162"),0)){_atlasLine?.("f82db9978f5f172617b1:162");const gl=(_atlasLine?.("f82db9978f5f172617b1:163"),this.gl),[a,u]=(_atlasLine?.("f82db9978f5f172617b1:163"),this.use(this.layers,this.quad));_atlasLine?.("f82db9978f5f172617b1:164");gl.enableVertexAttribArray(a.position);_atlasLine?.("f82db9978f5f172617b1:164");gl.vertexAttribPointer(a.position,2,gl.FLOAT,false,0,0);_atlasLine?.("f82db9978f5f172617b1:165");gl.activeTexture(gl.TEXTURE0);_atlasLine?.("f82db9978f5f172617b1:165");gl.bindTexture(gl.TEXTURE_2D,texture);_atlasLine?.("f82db9978f5f172617b1:165");gl.uniform1i(u.image,0);_atlasLine?.("f82db9978f5f172617b1:166");gl.uniform2f(u.center,x,y);_atlasLine?.("f82db9978f5f172617b1:166");gl.uniform2f(u.size,width,height);_atlasLine?.("f82db9978f5f172617b1:166");gl.uniform1f(u.angle,angle);_atlasLine?.("f82db9978f5f172617b1:166");gl.uniform1f(u.opacity,opacity);_atlasLine?.("f82db9978f5f172617b1:167");gl.uniform1f(u.startupGlow,startupGlow);_atlasLine?.("f82db9978f5f172617b1:168");gl.blendFunc(gl.ONE,screen?(_atlasLine?.("f82db9978f5f172617b1:168"),gl.ONE_MINUS_SRC_COLOR):(_atlasLine?.("f82db9978f5f172617b1:168"),gl.ONE_MINUS_SRC_ALPHA));_atlasLine?.("f82db9978f5f172617b1:168");gl.drawArrays(gl.TRIANGLES,0,6);}drawEcho(texture,x,y,width,height,angle,opacity,time,activity){_atlasLine?.("f82db9978f5f172617b1:170");const gl=(_atlasLine?.("f82db9978f5f172617b1:171"),this.gl),[a,u]=(_atlasLine?.("f82db9978f5f172617b1:171"),this.use(this.echo,this.quad));_atlasLine?.("f82db9978f5f172617b1:172");gl.enableVertexAttribArray(a.position);_atlasLine?.("f82db9978f5f172617b1:172");gl.vertexAttribPointer(a.position,2,gl.FLOAT,false,0,0);_atlasLine?.("f82db9978f5f172617b1:173");gl.activeTexture(gl.TEXTURE0);_atlasLine?.("f82db9978f5f172617b1:173");gl.bindTexture(gl.TEXTURE_2D,texture);_atlasLine?.("f82db9978f5f172617b1:173");gl.uniform1i(u.image,0);_atlasLine?.("f82db9978f5f172617b1:174");gl.uniform2f(u.center,x,y);_atlasLine?.("f82db9978f5f172617b1:174");gl.uniform2f(u.size,width,height);_atlasLine?.("f82db9978f5f172617b1:174");gl.uniform1f(u.angle,angle);_atlasLine?.("f82db9978f5f172617b1:175");gl.uniform1f(u.opacity,opacity);_atlasLine?.("f82db9978f5f172617b1:175");gl.uniform1f(u.time,time);_atlasLine?.("f82db9978f5f172617b1:175");gl.uniform1f(u.activity,activity);_atlasLine?.("f82db9978f5f172617b1:176");gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_COLOR);_atlasLine?.("f82db9978f5f172617b1:176");gl.drawArrays(gl.TRIANGLES,0,6);}finish(time){_atlasLine?.("f82db9978f5f172617b1:178");const gl=(_atlasLine?.("f82db9978f5f172617b1:179"),this.gl),[a,u]=(_atlasLine?.("f82db9978f5f172617b1:179"),this.use(this.post,this.quad));_atlasLine?.("f82db9978f5f172617b1:180");gl.bindFramebuffer(gl.FRAMEBUFFER,null);_atlasLine?.("f82db9978f5f172617b1:180");gl.viewport(0,0,this.canvas.width,this.canvas.height);_atlasLine?.("f82db9978f5f172617b1:180");gl.disable(gl.BLEND);_atlasLine?.("f82db9978f5f172617b1:181");gl.enableVertexAttribArray(a.position);_atlasLine?.("f82db9978f5f172617b1:181");gl.vertexAttribPointer(a.position,2,gl.FLOAT,false,0,0);_atlasLine?.("f82db9978f5f172617b1:182");gl.activeTexture(gl.TEXTURE0);_atlasLine?.("f82db9978f5f172617b1:182");gl.bindTexture(gl.TEXTURE_2D,this.sceneTexture);_atlasLine?.("f82db9978f5f172617b1:182");gl.uniform1i(u.image,0);_atlasLine?.("f82db9978f5f172617b1:183");gl.uniform2f(u.resolution,this.canvas.width,this.canvas.height);_atlasLine?.("f82db9978f5f172617b1:184");gl.uniform1f(u.fit,Math.min(this.canvas.width/W,this.canvas.height/H));_atlasLine?.("f82db9978f5f172617b1:184");gl.uniform1f(u.time,time);_atlasLine?.("f82db9978f5f172617b1:185");gl.drawArrays(gl.TRIANGLES,0,6);}}

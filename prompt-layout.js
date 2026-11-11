@@ -1,17 +1,2 @@
-// Binary searches keep long pasted commands as cheap to edit as short ones.
-export function visibleInput(chars, caret, available, measure) {
-  let low = 0, high = caret;
-  while (low < high) {
-    const mid = (low + high) >>> 1;
-    if (measure(chars.slice(mid, caret).join('')) <= available) high = mid;
-    else low = mid + 1;
-  }
-  const start = low;
-  low = caret; high = chars.length;
-  while (low < high) {
-    const mid = (low + high + 1) >>> 1;
-    if (measure(chars.slice(start, mid).join('')) <= available) low = mid;
-    else high = mid - 1;
-  }
-  return { start, end: low };
-}
+import{traceLine as _atlasLine}from"./code-trace.js";// Binary searches keep long pasted commands as cheap to edit as short ones.
+export function visibleInput(chars,caret,available,measure){_atlasLine?.("6208c324331658ccdd1b:2");let low=(_atlasLine?.("6208c324331658ccdd1b:3"),0),high=(_atlasLine?.("6208c324331658ccdd1b:3"),caret);_atlasLine?.("6208c324331658ccdd1b:4");while(low<high){const mid=(_atlasLine?.("6208c324331658ccdd1b:5"),low+high>>>1);_atlasLine?.("6208c324331658ccdd1b:6");if(measure(chars.slice(mid,caret).join(''))<=available){_atlasLine?.("6208c324331658ccdd1b:6");_atlasLine?.("6208c324331658ccdd1b:6");high=mid;}else{_atlasLine?.("6208c324331658ccdd1b:7");_atlasLine?.("6208c324331658ccdd1b:7");low=mid+1;}}const start=(_atlasLine?.("6208c324331658ccdd1b:9"),low);_atlasLine?.("6208c324331658ccdd1b:10");low=caret;_atlasLine?.("6208c324331658ccdd1b:10");high=chars.length;_atlasLine?.("6208c324331658ccdd1b:11");while(low<high){const mid=(_atlasLine?.("6208c324331658ccdd1b:12"),low+high+1>>>1);_atlasLine?.("6208c324331658ccdd1b:13");if(measure(chars.slice(start,mid).join(''))<=available){_atlasLine?.("6208c324331658ccdd1b:13");_atlasLine?.("6208c324331658ccdd1b:13");low=mid;}else{_atlasLine?.("6208c324331658ccdd1b:14");_atlasLine?.("6208c324331658ccdd1b:14");high=mid-1;}}_atlasLine?.("6208c324331658ccdd1b:16");return{start,end:low};}

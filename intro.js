@@ -1,33 +1,4 @@
-const clamp=x=>Math.max(0,Math.min(1,x));
-const smooth=x=>{x=clamp(x);return x*x*(3-2*x);};
-const easeOut=x=>1-Math.pow(1-clamp(x),3);
-
-// A single entrance, measured in visible scene time. No timers or input lock.
-export function introState(time,reduced=false){
-  if(reduced)time=4;
-  return{
-    x:.001+.999*easeOut((time-.02)/.28),
-    y:.004+.996*easeOut((time-.30)/.60),
-    opacity:smooth(time/.045),
-    flash:smooth(time/.045)*(1-smooth((time-.32)/.44)),
-    ascii:!((time>=.80&&time<.90)||(time>=.98&&time<1.08)),
-  };
-}
-
-// Only the terminal uses this power cycle. The character, wires and scene
+import{traceLine as _atlasLine}from"./code-trace.js";_atlasLine?.("12913494cafa227b5fb3:1");const clamp=x=>{_atlasLine?.("12913494cafa227b5fb3:1");_atlasLine?.("12913494cafa227b5fb3:1");return Math.max(0,Math.min(1,x));};_atlasLine?.("12913494cafa227b5fb3:2");const smooth=x=>{_atlasLine?.("12913494cafa227b5fb3:2");_atlasLine?.("12913494cafa227b5fb3:2");x=clamp(x);_atlasLine?.("12913494cafa227b5fb3:2");return x*x*(3-2*x);};_atlasLine?.("12913494cafa227b5fb3:3");const easeOut=x=>{_atlasLine?.("12913494cafa227b5fb3:3");_atlasLine?.("12913494cafa227b5fb3:3");return 1-Math.pow(1-clamp(x),3);};// A single entrance, measured in visible scene time. No timers or input lock.
+export function introState(time,reduced=(_atlasLine?.("12913494cafa227b5fb3:6"),false)){_atlasLine?.("12913494cafa227b5fb3:6");_atlasLine?.("12913494cafa227b5fb3:7");if(reduced){_atlasLine?.("12913494cafa227b5fb3:7");_atlasLine?.("12913494cafa227b5fb3:7");time=4;}else{void 0;}_atlasLine?.("12913494cafa227b5fb3:8");return{x:.001+.999*easeOut((time-.02)/.28),y:.004+.996*easeOut((time-.30)/.60),opacity:smooth(time/.045),flash:smooth(time/.045)*(1-smooth((time-.32)/.44)),ascii:!((_atlasLine?.("12913494cafa227b5fb3:13"),time>=.80)&&(_atlasLine?.("12913494cafa227b5fb3:13"),time<.90)||(_atlasLine?.("12913494cafa227b5fb3:13"),time>=.98)&&(_atlasLine?.("12913494cafa227b5fb3:13"),time<1.08))};}// Only the terminal uses this power cycle. The character, wires and scene
 // clock continue independently; keep the previous texture until it is dark.
-export function rebootState(time,reduced=false){
-  if(reduced)return {...introState(4),keepFrame:false,phase:'on',done:true};
-  if(time>=.66)return {...introState(time-.66),keepFrame:false,phase:time>=1.8?'on':'startup',done:time>=1.8};
-  return{
-    x:.001+.999*(1-smooth((time-.24)/.20)),
-    y:.004+.996*(1-smooth(time/.24)),
-    opacity:1-smooth((time-.40)/.06),
-    flash:smooth(time/.045)*(1-smooth((time-.30)/.14)),
-    ascii:true,keepFrame:time<.46,phase:time<.46?'shutdown':'off',done:false,
-  };
-}
-export function growth(time,index,front=false){
-  return easeOut((time-(front?.95:1.05)-index*.022)/1.35);
-}
-export function coilArrival(time,index){return easeOut((time-1.12-index*.035)/1.25);}
+export function rebootState(time,reduced=(_atlasLine?.("12913494cafa227b5fb3:19"),false)){_atlasLine?.("12913494cafa227b5fb3:19");_atlasLine?.("12913494cafa227b5fb3:20");if(reduced){_atlasLine?.("12913494cafa227b5fb3:20");_atlasLine?.("12913494cafa227b5fb3:20");return{...introState(4),keepFrame:false,phase:'on',done:true};}else{void 0;}_atlasLine?.("12913494cafa227b5fb3:21");if(time>=.66){_atlasLine?.("12913494cafa227b5fb3:21");_atlasLine?.("12913494cafa227b5fb3:21");return{...introState(time-.66),keepFrame:false,phase:time>=1.8?(_atlasLine?.("12913494cafa227b5fb3:21"),'on'):(_atlasLine?.("12913494cafa227b5fb3:21"),'startup'),done:time>=1.8};}else{void 0;}_atlasLine?.("12913494cafa227b5fb3:22");return{x:.001+.999*(1-smooth((time-.24)/.20)),y:.004+.996*(1-smooth(time/.24)),opacity:1-smooth((time-.40)/.06),flash:smooth(time/.045)*(1-smooth((time-.30)/.14)),ascii:true,keepFrame:time<.46,phase:time<.46?(_atlasLine?.("12913494cafa227b5fb3:27"),'shutdown'):(_atlasLine?.("12913494cafa227b5fb3:27"),'off'),done:false};}export function growth(time,index,front=(_atlasLine?.("12913494cafa227b5fb3:30"),false)){_atlasLine?.("12913494cafa227b5fb3:30");_atlasLine?.("12913494cafa227b5fb3:31");return easeOut((time-(front?(_atlasLine?.("12913494cafa227b5fb3:31"),.95):(_atlasLine?.("12913494cafa227b5fb3:31"),1.05))-index*.022)/1.35);}export function coilArrival(time,index){_atlasLine?.("12913494cafa227b5fb3:33");_atlasLine?.("12913494cafa227b5fb3:33");return easeOut((time-1.12-index*.035)/1.25);}

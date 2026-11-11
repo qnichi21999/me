@@ -1,10 +1,2 @@
-import {isHexCastingPattern} from './hexcasting-patterns.js';
-
-// Add site-specific angle signatures here; starting orientation is unrestricted.
-export const SITE_PATTERNS=Object.freeze(['dewqa']);
-export function isValidPattern(signature){
-  return SITE_PATTERNS.includes(signature)||isHexCastingPattern(signature);
-}
-export function patternHints(){
-  return [...SITE_PATTERNS];
-}
+import{traceLine as _atlasLine}from"../code-trace.js";import{isHexCastingPattern}from'./hexcasting-patterns.js';import{ATLAS_PATTERNS,PATTERN,PATTERN2,PATTERN3}from'../story/progress.js';// Add site-specific angle signatures here; starting orientation is unrestricted.
+export const SITE_PATTERNS=(_atlasLine?.("96b2866eee47510c412c:5"),Object.freeze([PATTERN]));export function isValidPattern(signature){_atlasLine?.("96b2866eee47510c412c:6");_atlasLine?.("96b2866eee47510c412c:7");return(_atlasLine?.("96b2866eee47510c412c:7"),Object.hasOwn(ATLAS_PATTERNS,signature))||(_atlasLine?.("96b2866eee47510c412c:7"),signature===PATTERN2)||(_atlasLine?.("96b2866eee47510c412c:7"),PATTERN3.includes(signature))||(_atlasLine?.("96b2866eee47510c412c:7"),SITE_PATTERNS.includes(signature))||(_atlasLine?.("96b2866eee47510c412c:7"),isHexCastingPattern(signature));}export function patternHints(){_atlasLine?.("96b2866eee47510c412c:9");_atlasLine?.("96b2866eee47510c412c:10");return[...SITE_PATTERNS];}

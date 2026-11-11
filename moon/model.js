@@ -1,28 +1,6 @@
-import {bobWeight} from './reference-math.js';
-
-export function spriteBasis(sprite){
-  // The package labels these triples "basis_columns", but its TSCN serializes
-  // nine scalar Basis arguments in row order. Match the native reference frame
-  // and the actual Godot 4.3 parser, rather than the mislabeled JSON/GLB export.
-  return sprite.basis_columns[0].map((_,i)=>sprite.basis_columns.map(row=>row[i]));
-}
-
-// Column-major matrices, matching the extracted Godot basis columns.
-export function inverseBasis(columns){
-  const [a,b,c]=columns;
-  const cross=(u,v)=>[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
-  const x=cross(b,c),y=cross(c,a),z=cross(a,b);
-  const determinant=a.reduce((sum,v,i)=>sum+v*x[i],0);
-  return [x[0],y[0],z[0],x[1],y[1],z[1],x[2],y[2],z[2]].map(v=>v/determinant);
-}
-export function cameraRotation([x,y,z]){
-  const sx=Math.sin(x),cx=Math.cos(x),sy=Math.sin(y),cy=Math.cos(y),sz=Math.sin(z),cz=Math.cos(z);
-  // Godot's default YXZ Euler order: Ry * Rx * Rz.
-  return [cy*cz+sy*sx*sz,cx*sz,-sy*cz+cy*sx*sz,
-    -cy*sz+sy*sx*cz,cx*cz,sy*sz+cy*sx*cz,
-    sy*cx,-sx,cy*cx];
-}
-export function spritePosition(sprite,time){
-  const weight=bobWeight(time);
-  return sprite.position.map((v,i)=>v+sprite.motion_delta[i]*weight);
-}
+import{traceLine as _atlasLine}from"../code-trace.js";import{bobWeight}from'./reference-math.js';export function spriteBasis(sprite){_atlasLine?.("58d51b3e94e65704c178:3");_atlasLine?.("58d51b3e94e65704c178:7");// The package labels these triples "basis_columns", but its TSCN serializes
+// nine scalar Basis arguments in row order. Match the native reference frame
+// and the actual Godot 4.3 parser, rather than the mislabeled JSON/GLB export.
+return sprite.basis_columns[0].map((_,i)=>{_atlasLine?.("58d51b3e94e65704c178:7");_atlasLine?.("58d51b3e94e65704c178:7");return sprite.basis_columns.map(row=>{_atlasLine?.("58d51b3e94e65704c178:7");_atlasLine?.("58d51b3e94e65704c178:7");return row[i];});});}// Column-major matrices, matching the extracted Godot basis columns.
+export function inverseBasis(columns){_atlasLine?.("58d51b3e94e65704c178:11");const[a,b,c]=(_atlasLine?.("58d51b3e94e65704c178:12"),columns);_atlasLine?.("58d51b3e94e65704c178:13");const cross=(u,v)=>{_atlasLine?.("58d51b3e94e65704c178:13");_atlasLine?.("58d51b3e94e65704c178:13");return[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];};const x=(_atlasLine?.("58d51b3e94e65704c178:14"),cross(b,c)),y=(_atlasLine?.("58d51b3e94e65704c178:14"),cross(c,a)),z=(_atlasLine?.("58d51b3e94e65704c178:14"),cross(a,b));const determinant=(_atlasLine?.("58d51b3e94e65704c178:15"),a.reduce((sum,v,i)=>{_atlasLine?.("58d51b3e94e65704c178:15");_atlasLine?.("58d51b3e94e65704c178:15");return sum+v*x[i];},0));_atlasLine?.("58d51b3e94e65704c178:16");return[x[0],y[0],z[0],x[1],y[1],z[1],x[2],y[2],z[2]].map(v=>{_atlasLine?.("58d51b3e94e65704c178:16");_atlasLine?.("58d51b3e94e65704c178:16");return v/determinant;});}export function cameraRotation([x,y,z]){_atlasLine?.("58d51b3e94e65704c178:18");const sx=(_atlasLine?.("58d51b3e94e65704c178:19"),Math.sin(x)),cx=(_atlasLine?.("58d51b3e94e65704c178:19"),Math.cos(x)),sy=(_atlasLine?.("58d51b3e94e65704c178:19"),Math.sin(y)),cy=(_atlasLine?.("58d51b3e94e65704c178:19"),Math.cos(y)),sz=(_atlasLine?.("58d51b3e94e65704c178:19"),Math.sin(z)),cz=(_atlasLine?.("58d51b3e94e65704c178:19"),Math.cos(z));// Godot's default YXZ Euler order: Ry * Rx * Rz.
+_atlasLine?.("58d51b3e94e65704c178:21");return[cy*cz+sy*sx*sz,cx*sz,-sy*cz+cy*sx*sz,(_atlasLine?.("58d51b3e94e65704c178:22"),-cy*sz+sy*sx*cz),(_atlasLine?.("58d51b3e94e65704c178:22"),cx*cz),(_atlasLine?.("58d51b3e94e65704c178:22"),sy*sz+cy*sx*cz),(_atlasLine?.("58d51b3e94e65704c178:23"),sy*cx),(_atlasLine?.("58d51b3e94e65704c178:23"),-sx),(_atlasLine?.("58d51b3e94e65704c178:23"),cy*cx)];}export function spritePosition(sprite,time){_atlasLine?.("58d51b3e94e65704c178:25");const weight=(_atlasLine?.("58d51b3e94e65704c178:26"),bobWeight(time));_atlasLine?.("58d51b3e94e65704c178:27");return sprite.position.map((v,i)=>{_atlasLine?.("58d51b3e94e65704c178:27");_atlasLine?.("58d51b3e94e65704c178:27");return v+sprite.motion_delta[i]*weight;});}

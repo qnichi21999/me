@@ -1,8 +1,6 @@
-export const fullscreen=`#version 300 es
+import{traceLine as _atlasLine}from"../code-trace.js";export const fullscreen=(_atlasLine?.("e40c8d3ba1e5b92b6af8:1"),`#version 300 es
 precision highp float;out vec2 uv;
-void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));uv=p;gl_Position=vec4(p*2.-1.,0.,1.);}`;
-
-const common=`
+void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));uv=p;gl_Position=vec4(p*2.-1.,0.,1.);}`);const common=(_atlasLine?.("e40c8d3ba1e5b92b6af8:5"),`
 precision highp float;
 uniform sampler2D panorama;
 uniform mat3 cameraRotation;
@@ -14,21 +12,18 @@ vec3 skyColor(vec3 ray){
  if(longitude<0.)longitude+=6.283185307179586;
  vec2 skyUV=vec2(longitude/6.283185307179586,acos(clamp(ray.y,-1.,1.))/3.141592653589793);
  return textureLod(panorama,skyUV,0.).rgb*skyEnergy;
-}`;
-
-export const sky=`#version 300 es
-${common}
+}`);export const sky=(_atlasLine?.("e40c8d3ba1e5b92b6af8:19"),`#version 300 es
+${_atlasLine?.("e40c8d3ba1e5b92b6af8:20"),common}
 out vec4 outColor;
-void main(){outColor=vec4(skyColor(worldRay()),1.);}`;
-
-export const compose=`#version 300 es
-${common}
+void main(){outColor=vec4(skyColor(worldRay()),1.);}`);export const compose=(_atlasLine?.("e40c8d3ba1e5b92b6af8:24"),`#version 300 es
+${_atlasLine?.("e40c8d3ba1e5b92b6af8:25"),common}
 uniform sampler2D moon,bodyAlpha,eyeAlpha,skyCache,stars,orbitStars;
 uniform bool cachedSky;
 uniform vec3 cameraPosition,moonPosition[2];
 uniform mat3 inverseBasis[2];
 uniform float moonAlpha[2];
 uniform vec2 quadSize,clipRange,gaze;
+uniform float irisFault;
 uniform vec3 starMirror;
 uniform float starHeight;
 uniform int spriteCount;
@@ -78,9 +73,11 @@ vec3 spriteOver(vec3 color,vec3 ray,int index){
  vec2 spriteUV=vec2(hit.x/quadSize.x+.5,.5-hit.y/quadSize.y);
  vec2 gradientX=dFdx(spriteUV),gradientY=dFdy(spriteUV);
  vec4 body=textureGrad(moon,spriteUV,gradientX,gradientY);
- vec4 eye=textureGrad(moon,spriteUV-gaze,gradientX,gradientY);
+ vec2 eyeUV=spriteUV-gaze;
+ eyeUV.x+=irisFault*step(.65,fract(eyeUV.y*37.));
+ vec4 eye=textureGrad(moon,eyeUV,gradientX,gradientY);
  body.a=textureGrad(bodyAlpha,spriteUV,gradientX,gradientY).r;
- eye.a=textureGrad(eyeAlpha,spriteUV-gaze,gradientX,gradientY).r;
+ eye.a=textureGrad(eyeAlpha,eyeUV,gradientX,gradientY).r;
  bool inside=all(lessThanEqual(abs(hit.xy),quadSize*.5));
  if(index>=spriteCount||!inside||distance<clipRange.x||distance>clipRange.y)return color;
  // The iris moves behind the stationary moon shell. The reflected quad uses
@@ -98,9 +95,7 @@ void main(){
  color=spriteOver(color,ray,1);
  color=orbitsOver(color,true,ray);
  outColor=vec4(toSRGB(color),1.);
-}`;
-
-export const psx=`#version 300 es
+}`);export const psx=(_atlasLine?.("e40c8d3ba1e5b92b6af8:106"),`#version 300 es
 precision highp float;
 uniform sampler2D image;uniform bool enabled;
 in vec2 uv;out vec4 outColor;
@@ -114,4 +109,4 @@ void main(){
   vec3 value=color*7.;color=(floor(value)+vec3(greaterThan(fract(value),vec3(threshold))))/7.;
  }
  outColor=vec4(color,1.);
-}`;
+}`);

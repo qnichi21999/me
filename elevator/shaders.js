@@ -1,8 +1,6 @@
-export const fullscreen=`#version 300 es
+import{traceLine as _atlasLine}from"../code-trace.js";export const fullscreen=(_atlasLine?.("40773e9e33515bb8cd6a:1"),`#version 300 es
 precision highp float;out vec2 uv;
-void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));uv=p;gl_Position=vec4(p*2.-1.,0.,1.);}`;
-
-export const spriteVertex=`#version 300 es
+void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));uv=p;gl_Position=vec4(p*2.-1.,0.,1.);}`);export const spriteVertex=(_atlasLine?.("40773e9e33515bb8cd6a:5"),`#version 300 es
 precision highp float;
 uniform vec2 center,size;uniform float rotation,camera;uniform vec4 uvRect;out vec2 uv;
 const vec2 V[6]=vec2[6](vec2(-.5,-.5),vec2(.5,-.5),vec2(-.5,.5),vec2(-.5,.5),vec2(.5,-.5),vec2(.5,.5));
@@ -11,12 +9,9 @@ void main(){
  p=vec2(p.x*c-p.y*s,p.x*s+p.y*c)+center-vec2(480.,269.);
  c=cos(camera);s=sin(camera);p=vec2(480.,270.)+vec2(c*p.x+s*p.y,-s*p.x+c*p.y);
  gl_Position=vec4(p.x/480.-1.,1.-p.y/270.,0.,1.);uv=uvRect.xy+(v+.5)*uvRect.zw;
-}`;
-export const spriteFragment=`#version 300 es
+}`);export const spriteFragment=(_atlasLine?.("40773e9e33515bb8cd6a:15"),`#version 300 es
 precision highp float;uniform sampler2D image;uniform vec4 tint;in vec2 uv;out vec4 outColor;
-void main(){outColor=texture(image,uv)*tint;}`;
-
-export const psx=`#version 300 es
+void main(){outColor=texture(image,uv)*tint;}`);export const psx=(_atlasLine?.("40773e9e33515bb8cd6a:19"),`#version 300 es
 precision highp float;uniform sampler2D image;in vec2 uv;out vec4 outColor;
 const float P[16]=float[16](0.,.50,.10,.65,.75,.25,.90,.35,.20,.70,.05,.50,.95,.40,.80,.30);
 void main(){
@@ -28,11 +23,9 @@ void main(){
  // and ACES operate on that result in linear space, not on linearized sprites.
  vec3 linear=mix(pow((result+.055)/1.055,vec3(2.4)),result/12.92,lessThanEqual(result,vec3(.04045)));
  outColor=vec4(linear,1.);
-}`;
-
-// Godot 4.3 glow's Gaussian kernel, firefly reduction, extraction and MIX.
+}`);// Godot 4.3 glow's Gaussian kernel, firefly reduction, extraction and MIX.
 // Source: godotengine/godot 4.3-stable, effects/copy.glsl (MIT).
-export const blur=`#version 300 es
+export const blur=(_atlasLine?.("40773e9e33515bb8cd6a:35"),`#version 300 es
 precision highp float;uniform sampler2D image;uniform vec2 stepUV;
 uniform bool firstPass,vertical;uniform float strength,exposure,bloom,hdrScale,luminanceCap;
 in vec2 uv;out vec4 outColor;
@@ -47,11 +40,9 @@ void main(){
   if(firstPass){color*=exposure;float luminance=max(color.r,max(color.g,color.b));float feedback=max(smoothstep(0.,hdrScale,luminance),bloom);color=min(color*feedback,vec3(luminanceCap));}
  }
  outColor=vec4(color,1.);
-}`;
-
-// ACES matrices/rational fit follow Godot's 4.3 tonemap.glsl (MIT),
+}`);// ACES matrices/rational fit follow Godot's 4.3 tonemap.glsl (MIT),
 // adapted from BakingLab's MIT-licensed ACES fit.
-export const tonemap=`#version 300 es
+export const tonemap=(_atlasLine?.("40773e9e33515bb8cd6a:54"),`#version 300 es
 precision highp float;uniform sampler2D image,glow2,glow4;uniform float exposure,whitePoint,glowMix;
 in vec2 uv;out vec4 outColor;
 vec3 aces(vec3 color){
@@ -65,9 +56,7 @@ vec3 aces(vec3 color){
 }
 vec3 toSRGB(vec3 c){c=clamp(c,0.,1.);return mix(1.055*pow(c,vec3(1./2.4))-.055,12.92*c,lessThan(c,vec3(.0031308)));}
 void main(){vec3 base=texture(image,uv).rgb*exposure;vec3 glow=texture(glow2,uv).rgb+texture(glow4,uv).rgb;
- outColor=vec4(toSRGB(aces(mix(base,glow,glowMix))),1.);}`;
-
-export const composite=`#version 300 es
+ outColor=vec4(toSRGB(aces(mix(base,glow,glowMix))),1.);}`);export const composite=(_atlasLine?.("40773e9e33515bb8cd6a:70"),`#version 300 es
 precision highp float;uniform sampler2D image,pattern;uniform float phase;uniform bool referenceMode;
 in vec2 uv;out vec4 outColor;
 float mask(float red,float opacity){return clamp(ceil(red+opacity*1.00001-1.),0.,1.);}
@@ -75,4 +64,4 @@ void main(){
  vec3 color=texture(image,uv).rgb;float alpha=1.;float red=texture(pattern,vec2(uv.x,1.-uv.y)).r;
  if(!referenceMode){if(phase<.35)alpha=1.-mask(red,1.-phase/.35);if(phase>=7.)alpha=mask(red,1.-clamp((phase-7.)/2.,0.,1.));}
  outColor=vec4(color*alpha,alpha);
-}`;
+}`);

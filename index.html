@@ -26,7 +26,7 @@
     <noscript>Enable JavaScript to view the animated scene.</noscript>
     <div class="scroll-hint" aria-label="Scroll to the next screen"><span>SCROLL</span><span aria-hidden="true">↓</span></div>
   </section>
-  <section id="screen-02" data-site-screen class="moon-screen" aria-label="Moon overlook" hidden>
+  <section id="screen-02" data-site-screen data-scroll-hold="1" class="moon-screen" aria-label="Moon overlook" hidden>
     <canvas id="moon-stage" role="img" aria-label="A violet moon with a red iris above a dark horizon, reflected in a red and purple patterned surface."></canvas>
     <div id="hex-input" role="group" tabindex="0" aria-label="Draw constellations in the sky" aria-describedby="hex-help" inert></div>
     <output id="hex-signature" aria-live="polite" aria-label="Drawn pattern" data-state="idle"></output>
@@ -34,11 +34,25 @@
     <p id="moon-error" hidden>Enable WebGL 2 in your browser to view the moon.</p>
     <a class="moon-return" href="#scene" data-screen-target="scene">↑ Back to the console</a>
   </section>
+  <section id="pebbles" data-site-screen aria-label="Five Pebbles' chamber" hidden>
+    <div class="pebbles-stage">
+      <canvas id="pebbles-room" width="1366" height="768" aria-hidden="true"></canvas>
+      <button id="pebbles-talk" class="pebbles-hotspot" aria-label="Talk to Five Pebbles" disabled></button>
+      <button id="pebbles-dialogue" type="button" aria-label="Advance dialogue" hidden>
+        <canvas aria-hidden="true"></canvas>
+      </button>
+      <p id="pebbles-line" class="accessible-terminal" aria-live="polite" aria-atomic="true"></p>
+    </div>
+    <p id="pebbles-error" role="status" hidden>The chamber could not be loaded.</p>
+    <p id="pebbles-dialogue-error" role="status" hidden>Could not load the dialogue.</p>
+    <a class="moon-return" href="#screen-02" data-screen-target="screen-02">↑ Back to the moon</a>
+  </section>
   </main>
   <div id="screen-scroll-track" aria-hidden="true"></div>
   <div id="elevator-overlay" aria-hidden="true"><canvas id="elevator-stage" aria-hidden="true"></canvas></div>
   <script type="module" src="./scene.js"></script>
   <script type="module" src="./screen-flow.js"></script>
   <script type="module" src="./moon-scene.js"></script>
+  <script type="module" src="./pebbles-scene.js"></script>
 </body>
 </html>
